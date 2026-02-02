@@ -110,7 +110,7 @@ export function VolunteerPage() {
             to our community.
           </p>
           <a
-            href="https://forms.office.com/r/aJYRBsLz5Q"
+            href="https://form.jotform.com/260286782706061"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-white hover:bg-gray-100 text-gray-900 font-semibold py-3 px-8 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl"
@@ -322,7 +322,7 @@ export function VolunteerPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://forms.office.com/r/aJYRBsLz5Q"
+              href="https://form.jotform.com/260286782706061"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-white hover:bg-gray-100 text-gray-900 font-semibold py-3 px-8 rounded-lg transition-all duration-200"
