@@ -9,7 +9,9 @@ export function HomePage() {
     <>
       <HeroWithFloatingVideo
         youtubeVideoId="CNUJpwsbtIQ"
-        floatingVideoUrl="https://www.youtube.com/watch?v=Fq6h5uhq4NQ"
+        floatingVideoUrl="https://www.youtube.com/watch?v=IkvMv1GoYdI"
+        videoThumbnailUrl="/assets/images/SanDiegoFestival-of-ScienceAndEngineering.png"
+        playButtonColor="bg-pink-600 hover:bg-pink-700"
       >
         <div className="w-full max-w-4xl text-center space-y-4 px-4 sm:space-y-6 drop-shadow-lg">
           <h1 className="text-3xl font-bold text-white drop-shadow-lg sm:text-4xl md:text-5xl lg:text-6xl">

@@ -7,6 +7,7 @@ interface VideoCardProps {
   thumbnailUrl?: string;
   onPlayClick?: () => void;
   className?: string;
+  playButtonColor?: string;
 }
 
 export function VideoCard({
@@ -14,6 +15,7 @@ export function VideoCard({
   thumbnailUrl,
   onPlayClick,
   className = "",
+  playButtonColor,
 }: VideoCardProps) {
 
   const getYouTubeVideoId = (url: string): string | null => {
@@ -68,7 +70,7 @@ export function VideoCard({
           <Button
             onClick={handlePlayClick}
             size="lg"
-            className="gap-2 rounded-full bg-blue-600 px-6 py-6 text-white shadow-lg hover:bg-blue-700 hover:scale-105 transition-transform"
+            className={`gap-2 rounded-full ${playButtonColor ?? "bg-blue-600 hover:bg-blue-700"} px-6 py-6 text-white shadow-lg hover:scale-105 transition-transform`}
             aria-label="Play video"
           >
             <Play className="h-5 w-5 fill-white" />

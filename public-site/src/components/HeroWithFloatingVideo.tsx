@@ -8,6 +8,7 @@ interface HeroWithFloatingVideoProps {
   mp4VideoFallback?: string;
   floatingVideoUrl?: string;
   videoThumbnailUrl?: string;
+  playButtonColor?: string;
   children?: ReactNode;
 }
 
@@ -16,6 +17,7 @@ export function HeroWithFloatingVideo({
   mp4VideoFallback,
   floatingVideoUrl,
   videoThumbnailUrl,
+  playButtonColor,
   children,
 }: HeroWithFloatingVideoProps) {
   const [isVideoPlayerOpen, setIsVideoPlayerOpen] = useState(false);
@@ -40,6 +42,7 @@ export function HeroWithFloatingVideo({
               <VideoCard
                 videoUrl={floatingVideoUrl}
                 thumbnailUrl={videoThumbnailUrl}
+                playButtonColor={playButtonColor}
                 onPlayClick={() => setIsVideoPlayerOpen(true)}
                 className="rounded-none"
               />
@@ -50,6 +53,7 @@ export function HeroWithFloatingVideo({
               <VideoCard
                 videoUrl={floatingVideoUrl}
                 thumbnailUrl={videoThumbnailUrl}
+                playButtonColor={playButtonColor}
                 onPlayClick={() => setIsVideoPlayerOpen(true)}
                 className="transform transition-transform hover:scale-[1.02]"
               />
