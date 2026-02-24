@@ -29,5 +29,4 @@ pnpm-debug.log*
 .claude
 
 # Test files
-_tests
-_Google_AI_Studio
+__Portal_Concept
