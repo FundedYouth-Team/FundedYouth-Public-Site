@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const monthlyTiers = [
   {
@@ -344,30 +344,66 @@ export function DonatePage() {
         </div>
       </section>
 
-      {/* One-Time Donations Section */}
+      {/* Ways to Give Section */}
       <section id="one-time" className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-10">
             <p className="text-gray-500 text-sm uppercase tracking-wider mb-2">
-              + Make a one-time gift
+              More Ways to Support
             </p>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-              One-Time Donations
+              Ways to Give
             </h2>
             <p className="text-gray-600">
-              Not ready for monthly? One-time gifts fund individual sessions.
+              Not ready for monthly? Make a one-time gift through any of our trusted platforms.
             </p>
           </div>
 
-          <div className="flex justify-center mb-8">
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.zeffy.com/en-US/donation-form/one-time-donation-33"
-              className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
-            >
-              Make a One-Time Donation
-            </a>
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            {/* Square Card */}
+            <div className="border-2 border-gray-200 rounded-2xl p-8 hover:shadow-lg hover:border-gray-900 transition-all flex flex-col items-center text-center">
+              <div className="w-14 h-14 rounded-2xl bg-gray-900 flex items-center justify-center mb-4">
+                <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M4.01 0A4.01 4.01 0 000 4.01v15.98A4.01 4.01 0 004.01 24h15.98A4.01 4.01 0 0024 19.99V4.01A4.01 4.01 0 0019.99 0H4.01zm3.12 7.13h9.74c.56 0 1.01.45 1.01 1.01v7.72c0 .56-.45 1.01-1.01 1.01H7.13c-.56 0-1.01-.45-1.01-1.01V8.14c0-.56.45-1.01 1.01-1.01zm2.63 2.63a.76.76 0 00-.75.75v2.98c0 .41.34.75.75.75h4.48c.41 0 .75-.34.75-.75v-2.98a.76.76 0 00-.75-.75H9.76z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Donate via Square</h3>
+              <p className="text-gray-600 text-sm mb-6">
+                Quick and easy — accepts credit cards, debit cards, Apple Pay, and Google Pay.
+              </p>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://square.link/u/EIfgYtZA"
+                className="mt-auto inline-block bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
+              >
+                Give with Square
+              </a>
+            </div>
+
+            {/* Zeffy Card */}
+            <div className="border-2 border-gray-200 rounded-2xl p-8 hover:shadow-lg hover:border-blue-500 transition-all flex flex-col items-center text-center">
+              <div className="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center mb-4">
+                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Donate via Zeffy</h3>
+              <p className="text-gray-600 text-sm mb-1">
+                100% of your donation goes to FundedYouth — Zeffy charges no platform fees.
+              </p>
+              <p className="text-blue-600 text-xs font-medium mb-6">
+                Tip: Select "Other" and enter $0 at checkout
+              </p>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.zeffy.com/en-US/donation-form/one-time-donation-33"
+                className="mt-auto inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
+              >
+                Give with Zeffy
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -406,12 +442,7 @@ export function DonatePage() {
             <br />
             any pathway they choose, from 3D printing to coding and beyond.
           </p>
-          <a
-            href="#monthly"
-            className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 shadow-lg"
-          >
-            Support a Child Today
-          </a>
+
         </div>
       </section>
 
