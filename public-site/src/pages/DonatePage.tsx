@@ -1,59 +1,5 @@
 import { useSearchParams } from "react-router-dom";
 
-const monthlyTiers = [
-  {
-    name: "Level 1 Sponsor",
-    amount: 75,
-    description: "1 session / month for a single student",
-    color: "blue",
-    stripeLink: "https://www.zeffy.com/en-US/donation-form/sponsor-a-student-22",
-    benefits: ["Listed on Donors Page", "Monthly Donors Newsletter"],
-    iconBg: "bg-blue-100",
-    iconColor: "text-blue-600",
-    checkColor: "text-blue-500",
-    buttonClass: "bg-blue-600 hover:bg-blue-700",
-  },
-  {
-    name: "Level 2 Sponsor",
-    amount: 125,
-    description: "2 sessions / month for a single student",
-    color: "purple",
-    stripeLink: "https://www.zeffy.com/en-US/donation-form/sponsor-a-student-22",
-    benefits: [
-      "Updates on your sponsored student",
-      "Listed on Donors Page",
-      "Monthly Donors Newsletter",
-      "Makers Community Access",
-    ],
-    highlighted: true,
-    iconBg: "bg-purple-100",
-    iconColor: "text-purple-600",
-    checkColor: "text-purple-500",
-    highlightText: "text-purple-700",
-    buttonClass: "bg-purple-600 hover:bg-purple-700",
-  },
-  {
-    name: "Level 3 Sponsor",
-    amount: 200,
-    description: "3 sessions / month for a single student",
-    color: "orange",
-    stripeLink: "https://www.zeffy.com/en-US/donation-form/sponsor-a-student-22",
-    benefits: [
-      "Discounts on Workshops",
-      "Updates on your sponsored student",
-      "Listed on Donors Page",
-      "Monthly Donors Newsletter",
-      "Makers Community Access",
-    ],
-    featured: true,
-    iconBg: "bg-orange-200",
-    iconColor: "text-orange-600",
-    checkColor: "text-orange-500",
-    highlightText: "text-orange-700",
-    buttonClass: "bg-orange-500 hover:bg-orange-600 shadow-md",
-  },
-];
-
 export function DonatePage() {
   const [searchParams] = useSearchParams();
   const canceled = searchParams.get("canceled");
@@ -106,7 +52,7 @@ export function DonatePage() {
           </div>
           <div className="mb-8">
             <p className="text-lg md:text-xl text-white/95 max-w-2xl mx-auto drop-shadow-md">
-              Your donation gives kids 2 sessions of hands-on learning every week—following a
+              Your donation gives kids hands-on learning opportunities—following a
               single pathway, mixing multiple tracks, or exploring them all.
             </p>
           </div>
@@ -120,7 +66,7 @@ export function DonatePage() {
 
           </div>
           <p className="text-white/90 text-sm mt-6 drop-shadow-md">
-            <span className="text-orange-300 font-bold">$200/month</span> = 3 sessions / month for a single student
+            <span className="text-orange-300 font-bold">Every dollar</span> goes directly to supporting a student's future
           </p>
         </div>
       </section>
@@ -205,27 +151,26 @@ export function DonatePage() {
         </div>
       </section>
 
-      {/* Monthly Donation Section */}
+      {/* Donations Section */}
       <section id="monthly" className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-2">
-              Recommended
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-6">
+            <p className="text-gray-500 text-sm uppercase tracking-wider mb-2">
+              Support FundedYouth
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Become a Monthly Supporter
+              Ways to Give
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Small monthly gifts create <strong>big, lasting impact</strong>. Join our Makers
-              Circle and help us plan for the future while you change a child's life today.
+              Every gift — one-time or monthly — helps kids discover what they can create.
             </p>
           </div>
 
-          {/* Monthly Tier Benefits */}
-          <div className="flex flex-wrap justify-center gap-4 mb-10 text-sm text-gray-600">
-            {["Sustained Support", "Quarterly Impact Newsletter", "Cancel Anytime"].map((benefit) => (
-              <div key={benefit} className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {/* Shared Donor Benefits */}
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 mb-10">
+            {["Listed on Donors Page", "Monthly Donors Newsletter", "Discounts on Services and Products"].map((benefit) => (
+              <div key={benefit} className="flex items-center gap-2 text-sm text-gray-700">
+                <svg className="w-5 h-5 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
                 <span>{benefit}</span>
@@ -233,163 +178,47 @@ export function DonatePage() {
             ))}
           </div>
 
-          {/* Monthly Donation Cards */}
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-6">
-            {monthlyTiers.map((tier) => (
-              <div
-                key={tier.name}
-                className={`border ${tier.featured ? "border-2 border-orange-500 bg-orange-50" : "border-gray-200 bg-white"} rounded-2xl p-6 hover:shadow-lg transition-shadow flex flex-col`}
-              >
-                <div className="flex items-center gap-2 mb-4">
-                  <div className={`w-10 h-10 rounded-full ${tier.iconBg} flex items-center justify-center`}>
-                    <svg className={`w-5 h-5 ${tier.iconColor}`} fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  </div>
-                  <span className="font-semibold text-gray-900">{tier.name}</span>
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Square — One-Time */}
+            <div className="order-3 md:order-1 border-2 border-gray-200 rounded-2xl p-7 hover:shadow-lg hover:border-gray-900 transition-all flex flex-col">
+              <span className="inline-block self-start bg-gray-100 text-gray-600 text-xs font-semibold px-3 py-1 rounded-full mb-5 uppercase tracking-wider">
+                One-Time
+              </span>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-11 h-11 rounded-xl bg-gray-900 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M4.01 0A4.01 4.01 0 000 4.01v15.98A4.01 4.01 0 004.01 24h15.98A4.01 4.01 0 0024 19.99V4.01A4.01 4.01 0 0019.99 0H4.01zm3.12 7.13h9.74c.56 0 1.01.45 1.01 1.01v7.72c0 .56-.45 1.01-1.01 1.01H7.13c-.56 0-1.01-.45-1.01-1.01V8.14c0-.56.45-1.01 1.01-1.01zm2.63 2.63a.76.76 0 00-.75.75v2.98c0 .41.34.75.75.75h4.48c.41 0 .75-.34.75-.75v-2.98a.76.76 0 00-.75-.75H9.76z" />
+                  </svg>
                 </div>
-                <div className="mb-2">
-                  <span className="text-4xl font-bold text-gray-900">${tier.amount}</span>
-                  <span className="text-gray-500">/month</span>
-                </div>
-                <p className="text-xs text-gray-500 mb-4">{tier.description}</p>
-                <ul className="space-y-3 text-sm text-gray-600 mb-6 flex-grow">
-                  {tier.benefits.map((benefit, index) => (
-                    <li key={benefit} className="flex items-start gap-2">
-                      <svg className={`w-4 h-4 ${tier.checkColor} mt-0.5 flex-shrink-0`} fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span className={tier.highlightText && index < 2 ? `font-medium ${tier.highlightText}` : ""}>
-                        {benefit}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={tier.stripeLink}
-                  className={`block w-full text-center ${tier.buttonClass} text-white font-semibold py-3 px-6 rounded-full transition-all duration-200 mt-auto`}
-                >
-                  Give ${tier.amount}/month
-                </a>
+                <h3 className="text-xl font-bold text-gray-900">Give via Square</h3>
               </div>
-            ))}
-          </div>
-
-          {/* Corporate Sponsor */}
-          <div className="max-w-4xl mx-auto">
-            <div className="border-2 border-slate-800 rounded-2xl p-8 bg-gradient-to-r from-slate-800 to-slate-900 hover:shadow-xl transition-shadow">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                <div className="flex-grow">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-full bg-amber-400 flex items-center justify-center">
-                      <svg className="w-6 h-6 text-slate-900" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1 1h-2a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div>
-                      <span className="font-bold text-white text-xl">Level 4 Sponsor</span>
-                      <p className="text-slate-400 text-sm">10 sessions / month for a single student</p>
-                    </div>
-                  </div>
-                  <div className="mb-4">
-                    <span className="text-4xl font-bold text-white">$500</span>
-                    <span className="text-slate-400"> / month</span>
-                  </div>
-                  <ul className="grid md:grid-cols-2 gap-3 text-sm text-slate-300">
-                    {[
-                      "Fully back 1 student",
-                      "Covers all pathways",
-                      "Everything from Level 3",
-                      "Discounts on latest products",
-                    ].map((benefit) => (
-                      <li key={benefit} className="flex items-start gap-2">
-                        <svg className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                        <span>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="flex-shrink-0">
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://www.zeffy.com/en-US/donation-form/sponsor-a-student-22"
-                    className="inline-block bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold py-4 px-8 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl text-center">
-                    Contact Us to Partner
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Emotional Quote Section */}
-      <section className="py-12 bg-gradient-to-r from-blue-50 to-orange-50">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <svg className="w-10 h-10 text-blue-300 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-          </svg>
-          <p className="text-xl md:text-2xl text-gray-700 italic mb-6">
-            Every session you sponsor gives a child hands-on time to learn, create, and grow—
-            <br className="hidden md:block" />
-            <span className="text-blue-600 font-semibold not-italic">
-              building skills that last a lifetime.
-            </span>
-          </p>
-        </div>
-      </section>
-
-      {/* Ways to Give Section */}
-      <section id="one-time" className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="text-center mb-10">
-            <p className="text-gray-500 text-sm uppercase tracking-wider mb-2">
-              More Ways to Support
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-              Ways to Give
-            </h2>
-            <p className="text-gray-600">
-              Not ready for monthly? Make a one-time gift through any of our trusted platforms.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            {/* Square Card */}
-            <div className="border-2 border-gray-200 rounded-2xl p-8 hover:shadow-lg hover:border-gray-900 transition-all flex flex-col items-center text-center">
-              <div className="w-14 h-14 rounded-2xl bg-gray-900 flex items-center justify-center mb-4">
-                <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M4.01 0A4.01 4.01 0 000 4.01v15.98A4.01 4.01 0 004.01 24h15.98A4.01 4.01 0 0024 19.99V4.01A4.01 4.01 0 0019.99 0H4.01zm3.12 7.13h9.74c.56 0 1.01.45 1.01 1.01v7.72c0 .56-.45 1.01-1.01 1.01H7.13c-.56 0-1.01-.45-1.01-1.01V8.14c0-.56.45-1.01 1.01-1.01zm2.63 2.63a.76.76 0 00-.75.75v2.98c0 .41.34.75.75.75h4.48c.41 0 .75-.34.75-.75v-2.98a.76.76 0 00-.75-.75H9.76z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Donate via Square</h3>
-              <p className="text-gray-600 text-sm mb-6">
+              <p className="text-gray-600 text-sm mb-6 flex-grow">
                 Quick and easy — accepts credit cards, debit cards, Apple Pay, and Google Pay.
               </p>
               <a
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://square.link/u/EIfgYtZA"
-                className="mt-auto inline-block bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
+                className="block w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-6 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
               >
-                Give with Square
+                Donate with Square
               </a>
             </div>
 
-            {/* Zeffy Card */}
-            <div className="border-2 border-gray-200 rounded-2xl p-8 hover:shadow-lg hover:border-blue-500 transition-all flex flex-col items-center text-center">
-              <div className="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center mb-4">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
+            {/* Zeffy — One-Time */}
+            <div className="order-2 md:order-2 border-2 border-gray-200 rounded-2xl p-7 hover:shadow-lg hover:border-blue-500 transition-all flex flex-col">
+              <span className="inline-block self-start bg-gray-100 text-gray-600 text-xs font-semibold px-3 py-1 rounded-full mb-5 uppercase tracking-wider">
+                One-Time
+              </span>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-11 h-11 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Give via Zeffy</h3>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Donate via Zeffy</h3>
-              <p className="text-gray-600 text-sm mb-1">
+              <p className="text-gray-600 text-sm mb-1 flex-grow">
                 100% of your donation goes to FundedYouth — Zeffy charges no platform fees.
               </p>
               <p className="text-blue-600 text-xs font-medium mb-6">
@@ -399,18 +228,47 @@ export function DonatePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://www.zeffy.com/en-US/donation-form/one-time-donation-33"
-                className="mt-auto inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
+                className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
               >
-                Give with Zeffy
+                Donate with Zeffy
               </a>
+            </div>
+
+            {/* Zeffy — Monthly */}
+            <div className="order-1 md:order-3 border-2 border-orange-300 rounded-2xl p-7 bg-orange-50 hover:shadow-lg hover:border-orange-400 transition-all flex flex-col relative">
+              <div className="flex items-center gap-2 mb-5">
+                <span className="inline-block bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
+                  Monthly
+                </span>
+                <span className="text-orange-600 text-xs font-semibold">Recommended</span>
+              </div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-11 h-11 rounded-xl bg-orange-500 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Monthly via Zeffy</h3>
+              </div>
+              <p className="text-gray-600 text-sm mb-6 flex-grow">
+                Choose any amount. Small monthly gifts create big, lasting impact. 100% goes to FundedYouth.
+              </p>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.zeffy.com/en-US/donation-form/sponsor-a-student-22"
+                className="block w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
+              >
+                Start Giving Monthly
+              </a>
+              <p className="text-gray-500 text-xs mt-3 text-center">Cancel anytime</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-12 overflow-hidden">
-        {/* Background Image */}
+      <section className="relative py-14 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="/assets/images/classroom-tutoring-v1.png"
@@ -418,31 +276,24 @@ export function DonatePage() {
             className="w-full h-full object-cover"
           />
         </div>
-        {/* Blue Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/90 via-blue-700/90 to-blue-800/90"></div>
 
         <div className="relative max-w-3xl mx-auto px-4 text-center">
-          <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-            </svg>
-          </div>
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 drop-shadow-lg">
             Be the Reason a Child Discovers
             <br />
             What They Can Create
           </h2>
           <p className="text-blue-100 mb-6 max-w-xl mx-auto drop-shadow-md">
-            Right now, there are kids in our community who have never touched a 3D printer, never
-            written a line of code, never imagined they could build something real.
+            Your support gives a child hands-on time to learn, create, and
+            grow — building skills that last a lifetime.
           </p>
-          <p className="text-white font-semibold mb-6 drop-shadow-md">
-            <span className="text-orange-300">$200/month</span> gives a child 3 sessions every
-            month—
-            <br />
-            any pathway they choose, from 3D printing to coding and beyond.
-          </p>
-
+          <a
+            href="#monthly"
+            className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 shadow-lg"
+          >
+            Support a Child Today
+          </a>
         </div>
       </section>
 
