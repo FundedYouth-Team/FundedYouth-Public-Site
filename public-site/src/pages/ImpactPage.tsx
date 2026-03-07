@@ -685,7 +685,7 @@ export function ImpactPage() {
       </section>
 
       {/* Board Members */}
-      <section className="bg-gray-50 py-20 px-4">
+      {/* <section className="bg-gray-50 py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <p className="text-sm font-semibold text-purple-600 uppercase tracking-wide mb-2">
@@ -725,12 +725,12 @@ export function ImpactPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Sponsors Section */}
-      <section className="bg-white py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+      {/* <section className="bg-white py-20 px-4"> */}
+        {/* <div className="max-w-6xl mx-auto"> */}
+          {/* <div className="text-center mb-16">
             <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
               Our Supporters
             </p>
@@ -740,10 +740,10 @@ export function ImpactPage() {
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Our mission is made possible by the generous support of these organizations and individuals.
             </p>
-          </div>
+          </div> */}
 
           {/* Gold Sponsors */}
-          <div className="mb-12">
+          {/* <div className="mb-12">
             <h3 className="text-center text-sm font-semibold text-yellow-600 uppercase tracking-wide mb-6">
               Gold Partners
             </h3>
@@ -759,10 +759,10 @@ export function ImpactPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Silver Sponsors */}
-          <div className="mb-12">
+          {/* <div className="mb-12">
             <h3 className="text-center text-sm font-semibold text-gray-500 uppercase tracking-wide mb-6">
               Silver Partners
             </h3>
@@ -773,10 +773,10 @@ export function ImpactPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Bronze Sponsors */}
-          <div>
+          {/* <div>
             <h3 className="text-center text-sm font-semibold text-amber-700 uppercase tracking-wide mb-6">
               Bronze Partners
             </h3>
@@ -787,9 +787,9 @@ export function ImpactPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
-          <div className="text-center mt-16">
+          {/* <div className="text-center mt-16">
             <p className="text-gray-600 mb-4">Interested in supporting our mission?</p>
             <Link
               to="/sponsor"
@@ -797,9 +797,9 @@ export function ImpactPage() {
             >
               Become a Sponsor
             </Link>
-          </div>
-        </div>
-      </section>
+          </div> */}
+        {/* </div> */}
+      {/* </section> */}
 
       {/* CTA Section */}
       <section className="bg-white py-20 px-4">
