@@ -37,7 +37,7 @@ export function StorePage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="/assets/images/ecommerce-products.png"
+            src="https://ps-cdn.fundedyouth.org/assets/images/ecommerce-products.png"
             alt=""
             className="w-full h-full object-cover"
           />

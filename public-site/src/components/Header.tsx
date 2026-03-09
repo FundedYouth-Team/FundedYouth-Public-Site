@@ -37,7 +37,7 @@ export function Header() {
                 className="flex items-center space-x-2 hover:opacity-90 transition-opacity"
               >
                 <img
-                  src="/logo-color-white-bg.png"
+                  src="https://ps-cdn.fundedyouth.org/logo-color-white-bg.png"
                   alt="FundedYouth"
                   className="h-8 w-auto"
                 />
@@ -129,7 +129,7 @@ export function Header() {
                 onClick={closeMobileMenu}
               >
                 <img
-                  src="/logo-color-white-bg.png"
+                  src="https://ps-cdn.fundedyouth.org/logo-color-white-bg.png"
                   alt="FundedYouth"
                   className="h-8 w-auto bg-blue-600 rounded-lg p-1"
                 />

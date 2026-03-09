@@ -156,15 +156,15 @@ const boardMembers = [
 // Before/After impact images
 const impactImages = [
   {
-    before: "/assets/images/impact/PreOculusQuestNASASimulation.jpg",
-    after: "/assets/images/impact/OculusQuestNASASimulation.png",
+    before: "https://ps-cdn.fundedyouth.org/assets/images/impact/PreOculusQuestNASASimulation.jpg",
+    after: "https://ps-cdn.fundedyouth.org/assets/images/impact/OculusQuestNASASimulation.png",
     beforeLabel: "Before",
     afterLabel: "After",
     title: "Classroom Transformation",
   },
   {
-    before: "/assets/images/impact/PreTaftMiddleSchool.jpg",
-    after: "/assets/images/impact/TaftMiddleSchool.png",
+    before: "https://ps-cdn.fundedyouth.org/assets/images/impact/PreTaftMiddleSchool.jpg",
+    after: "https://ps-cdn.fundedyouth.org/assets/images/impact/TaftMiddleSchool.png",
     beforeLabel: "Learning",
     afterLabel: "Creating",
     title: "Student Growth",
@@ -188,7 +188,7 @@ export function ImpactPage() {
       <section className="relative py-20 px-4 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/assets/images/classroom-tutoring-v1.png')" }}
+          style={{ backgroundImage: "url('https://ps-cdn.fundedyouth.org/assets/images/classroom-tutoring-v1.png')" }}
         />
         <div className="absolute inset-0 bg-blue-600/85" />
 
@@ -300,7 +300,7 @@ export function ImpactPage() {
 
       {/* Tagline Banner */}
       <TaglineBanner
-        backgroundImage="/assets/images/tagline-bg-3dprinting.png"
+        backgroundImage="https://ps-cdn.fundedyouth.org/assets/images/tagline-bg-3dprinting.png"
         overlayColor="rgba(37, 99, 235, 0.85)"
       >
         <p className="text-2xl sm:text-3xl leading-tight">
@@ -531,7 +531,7 @@ export function ImpactPage() {
             <div className="relative">
               <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-xl">
                 <img
-                  src="/assets/images/storefront-back-with-people.png"
+                  src="https://ps-cdn.fundedyouth.org/assets/images/storefront-back-with-people.png"
                   alt="Rusteze Robotics team at FundedYouth makerspace"
                   className="w-full h-full object-cover"
                 />
@@ -561,7 +561,7 @@ export function ImpactPage() {
             <div className="relative order-2 lg:order-1">
               <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-xl">
                 <img
-                  src="/assets/images/impact/CampusLabConcept.png"
+                  src="https://ps-cdn.fundedyouth.org/assets/images/impact/CampusLabConcept.png"
                   alt="3D Print Lab concept"
                   className="w-full h-full object-cover"
                 />
@@ -640,7 +640,7 @@ export function ImpactPage() {
 
       {/* Tagline Banner 2 */}
       <TaglineBanner
-        backgroundImage="/assets/images/tagline-bg-soldering.png"
+        backgroundImage="https://ps-cdn.fundedyouth.org/assets/images/tagline-bg-soldering.png"
         overlayColor="rgba(0, 150, 137, 0.85)"
       >
         <p className="text-2xl sm:text-3xl leading-tight italic">
@@ -832,7 +832,7 @@ export function ImpactPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               <img
-                src="/assets/images/email-info.svg"
+                src="https://ps-cdn.fundedyouth.org/assets/images/email-info.svg"
                 alt="Email info"
                 className="h-5"
               />

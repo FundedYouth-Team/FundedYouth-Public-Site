@@ -185,7 +185,7 @@ export function ClassesPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="/assets/images/stem-classroom-v2.png"
+            src="https://ps-cdn.fundedyouth.org/assets/images/stem-classroom-v2.png"
             alt=""
             className="w-full h-full object-cover"
           />
@@ -399,7 +399,7 @@ export function ClassesPage() {
             ) : (
               <div className="text-center py-8">
                 <img
-                  src="/assets/images/coming-soon.png"
+                  src="https://ps-cdn.fundedyouth.org/assets/images/coming-soon.png"
                   alt="Coming Soon"
                   className="mx-auto mb-4 max-w-xs"
                 />

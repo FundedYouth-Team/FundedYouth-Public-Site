@@ -91,7 +91,7 @@ export function VolunteerPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="/assets/images/storefront-back-with-people.png"
+            src="https://ps-cdn.fundedyouth.org/assets/images/storefront-back-with-people.png"
             alt=""
             className="w-full h-full object-cover"
           />
@@ -225,7 +225,7 @@ export function VolunteerPage() {
         <div className="max-w-4xl mx-auto px-4">
           <div className="rounded-2xl overflow-hidden shadow-md">
             <img
-              src="/assets/images/storefront-with-people.png"
+              src="https://ps-cdn.fundedyouth.org/assets/images/storefront-with-people.png"
               alt="Volunteers helping at FundedYouth storefront"
               className="w-full h-auto"
             />

@@ -183,7 +183,7 @@ export function ContactPage() {
               <h3 className="font-bold text-gray-900 mb-2">Email Address</h3>
               {/* Email address as image for spam protection */}
               <img
-                src="/assets/images/email-address.png"
+                src="https://ps-cdn.fundedyouth.org/assets/images/email-address.png"
                 alt="Email Address"
                 className="h-6 mx-auto"
               />

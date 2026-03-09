@@ -10,7 +10,7 @@ export function HomePage() {
       <HeroWithFloatingVideo
         youtubeVideoId="CNUJpwsbtIQ"
         floatingVideoUrl="https://www.youtube.com/watch?v=-tcb2K4tT10"
-        videoThumbnailUrl="/assets/images/micro-mech-kits.png"
+        videoThumbnailUrl="https://ps-cdn.fundedyouth.org/assets/images/micro-mech-kits.png"
         playButtonColor="bg-pink-600 hover:bg-pink-700"
       >
         <div className="w-full max-w-4xl text-center space-y-4 px-4 sm:space-y-6 drop-shadow-lg">
@@ -81,7 +81,7 @@ export function HomePage() {
             {/* <FeatureCard
               icon={
                 <img
-                  src="/assets/images/credit-v2.png"
+                  src="https://ps-cdn.fundedyouth.org/assets/images/credit-v2.png"
                   alt="Memberships"
                   className="w-full h-full object-cover rounded-lg"
                 />
@@ -96,7 +96,7 @@ export function HomePage() {
             {/* <FeatureCard
               icon={
                 <img
-                  src="/assets/images/class-v1.png"
+                  src="https://ps-cdn.fundedyouth.org/assets/images/class-v1.png"
                   alt="Classes"
                   className="w-full h-full object-cover rounded-lg"
                 />
@@ -111,7 +111,7 @@ export function HomePage() {
             {/* <FeatureCard
               icon={
                 <img
-                  src="/assets/images/prototype-v1.png"
+                  src="https://ps-cdn.fundedyouth.org/assets/images/prototype-v1.png"
                   alt="Makerspace"
                   className="w-full h-full object-cover rounded-lg"
                 />
@@ -126,7 +126,7 @@ export function HomePage() {
       {/* </section> */}
 
       {/* Tagline Banner Section */}
-      <TaglineBanner backgroundImage="/assets/images/tagline-bg-soldering.png">
+      <TaglineBanner backgroundImage="https://ps-cdn.fundedyouth.org/assets/images/tagline-bg-soldering.png">
         <p className="text-2xl sm:text-3xl md:text-1xl lg:text-1xl leading-tight">
           Empowering{' '}
           <span className="font-extrabold">youth with the tools,</span> skills,
@@ -159,8 +159,8 @@ export function HomePage() {
         buttonText="Register today"
         buttonHref="/classes"
         mediaType="video"
-        mediaSrc="/assets/video/making-a-sword.mp4"
-        videoThumbnail="/assets/images/making-a-sword-video-cover.png"
+        mediaSrc="https://ps-cdn.fundedyouth.org/assets/video/making-a-sword.mp4"
+        videoThumbnail="https://ps-cdn.fundedyouth.org/assets/images/making-a-sword-video-cover.png"
         videoAutoPlayCount={3}
       />
 
@@ -171,8 +171,8 @@ export function HomePage() {
         buttonText="Learn to code"
         buttonHref="/classes"
         mediaType="video"
-        mediaSrc="/assets/video/countdown.mp4"
-        videoThumbnail="/assets/images/countdown-video-cover.png"
+        mediaSrc="https://ps-cdn.fundedyouth.org/assets/video/countdown.mp4"
+        videoThumbnail="https://ps-cdn.fundedyouth.org/assets/images/countdown-video-cover.png"
         videoAutoPlayCount={3}
         titleColor="text-green-600"
         buttonColor="bg-green-600"
@@ -186,7 +186,7 @@ export function HomePage() {
         buttonText="Book a Session"
         buttonHref="/classes"
         mediaType="image"
-        mediaSrc="/assets/images/classroom-tutoring-v1.png"
+        mediaSrc="https://ps-cdn.fundedyouth.org/assets/images/classroom-tutoring-v1.png"
         titleColor="text-orange-400"
         buttonColor="bg-orange-400"
       />
@@ -199,7 +199,7 @@ export function HomePage() {
         buttonText="Visit Makerspace"
         buttonHref="/contact"
         mediaType="image"
-        mediaSrc="/assets/images/rusteze-robotics-2025-26.png"
+        mediaSrc="https://ps-cdn.fundedyouth.org/assets/images/rusteze-robotics-2025-26.png"
         backgroundColor="bg-gray-50"
         imagePosition="left"
         titleColor="text-red-600"
@@ -208,7 +208,7 @@ export function HomePage() {
 
       {/* Tagline Banner Section */}
       <TaglineBanner
-        backgroundImage="/assets/images/tagline-bg-classroom.png"
+        backgroundImage="https://ps-cdn.fundedyouth.org/assets/images/tagline-bg-classroom.png"
         overlayColor="rgba(0, 150, 137, .8)"
       >
         <p className="text-2xl sm:text-3xl md:text-1xl lg:text-1xl leading-tight italic">

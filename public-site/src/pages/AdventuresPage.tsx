@@ -8,7 +8,7 @@ export function AdventuresPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="/assets/images/rusteze-robotics-2025-26.png"
+            src="https://ps-cdn.fundedyouth.org/assets/images/rusteze-robotics-2025-26.png"
             alt=""
             className="w-full h-full object-cover"
           />
@@ -197,7 +197,7 @@ export function AdventuresPage() {
                 Robotics
               </span>
               <img
-                src="/assets/images/rusteze-robotics-2025-26.png"
+                src="https://ps-cdn.fundedyouth.org/assets/images/rusteze-robotics-2025-26.png"
                 alt="Rusteze Robotics FIRST Tech Challenge team"
                 className="w-full h-auto object-cover"
               />
@@ -210,7 +210,7 @@ export function AdventuresPage() {
                 FIRST Tech Challenge
               </h3>
               <img
-                src="/assets/images/FIRST_Horz_RGB.png"
+                src="https://ps-cdn.fundedyouth.org/assets/images/FIRST_Horz_RGB.png"
                 alt="FIRST Logo"
                 className="h-8 w-auto mb-4"
               />
@@ -253,7 +253,7 @@ export function AdventuresPage() {
                 Rocketry
               </span>
               <img
-                src="/assets/images/stem-classroom-v2.png"
+                src="https://ps-cdn.fundedyouth.org/assets/images/stem-classroom-v2.png"
                 alt="NASA Student Launch team"
                 className="w-full h-auto object-cover"
               />
@@ -403,7 +403,7 @@ export function AdventuresPage() {
                 />
               </svg>
               <img
-                src="/assets/images/email-adventures.svg"
+                src="https://ps-cdn.fundedyouth.org/assets/images/email-adventures.svg"
                 alt="Email adventures"
                 className="h-5"
               />

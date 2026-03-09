@@ -31,7 +31,7 @@ export function DonatePage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="/assets/images/3Kids-Looking-at-3D-Pencil-Holding-Monster-1024x683.png"
+            src="https://ps-cdn.fundedyouth.org/assets/images/3Kids-Looking-at-3D-Pencil-Holding-Monster-1024x683.png"
             alt=""
             className="w-full h-full object-cover"
           />
@@ -111,7 +111,7 @@ export function DonatePage() {
           <div className="bg-white rounded-2xl shadow-md p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
             <div className="shrink-0">
               <img
-                src="/assets/images/zeffy-100-percent-donation.png"
+                src="https://ps-cdn.fundedyouth.org/assets/images/zeffy-100-percent-donation.png"
                 alt="Zeffy donation summary showing the 'Other' option to ensure 100% goes to FundedYouth"
                 className="rounded-lg border border-gray-200 shadow-sm w-full md:w-64"
               />
@@ -271,7 +271,7 @@ export function DonatePage() {
       <section className="relative py-14 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/assets/images/classroom-tutoring-v1.png"
+            src="https://ps-cdn.fundedyouth.org/assets/images/classroom-tutoring-v1.png"
             alt=""
             className="w-full h-full object-cover"
           />
@@ -305,7 +305,7 @@ export function DonatePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center text-sm">
             <span className="inline-flex items-center">
               <img
-                src="/assets/images/email-donate.svg"
+                src="https://ps-cdn.fundedyouth.org/assets/images/email-donate.svg"
                 alt="Email donate"
                 className="h-5"
               />

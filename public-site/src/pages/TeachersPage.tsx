@@ -622,7 +622,7 @@ export function TeachersPage() {
             </p>
 
             <img
-              src="/assets/images/email-info.svg"
+              src="https://ps-cdn.fundedyouth.org/assets/images/email-info.svg"
               alt="info@fundedyouth.org"
               className="h-8 mx-auto mb-6"
             />
