@@ -25,7 +25,7 @@ export function ContactPage() {
             Get the latest updates and promotions
           </h2>
 
-          {/* Mailchimp Form */}
+          {/* Newsletter Sign Up Form */}
           <div className="border border-gray-200 rounded-xl p-8">
             <div className="text-center mb-6">
               <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -49,102 +49,28 @@ export function ContactPage() {
               <p className="text-gray-500 text-sm">Sign up for a Newsletter.</p>
             </div>
 
-            {/* Mailchimp Signup Form */}
-            <form
-              action="https://fundedyouth.us15.list-manage.com/subscribe/post?u=b8008ae86fd8ccf3703b1d1e7&amp;id=65c7edf8a0&amp;f_id=00f4c2e1f0"
-              method="post"
-              id="mc-embedded-subscribe-form"
-              name="mc-embedded-subscribe-form"
-              className="space-y-4"
-              target="_blank"
+            {/* Zeffy Sign Up */}
+            <div
+              style={{
+                position: 'relative',
+                overflow: 'hidden',
+                width: '100%',
+                height: '320px'
+              }}
             >
-              <div>
-                <label
-                  htmlFor="mce-EMAIL"
-                  className="block text-sm text-gray-600 mb-1"
-                >
-                  Email Address <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="email"
-                  name="EMAIL"
-                  id="mce-EMAIL"
-                  placeholder="sample@mail.com"
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="mce-FNAME"
-                  className="block text-sm text-gray-600 mb-1"
-                >
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  name="FNAME"
-                  id="mce-FNAME"
-                  placeholder="John"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="mce-LNAME"
-                  className="block text-sm text-gray-600 mb-1"
-                >
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  name="LNAME"
-                  id="mce-LNAME"
-                  placeholder="Smith"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
-                />
-              </div>
-
-              {/* Mailchimp response messages */}
-              <div id="mce-responses">
-                <div
-                  className="text-red-500 text-sm"
-                  id="mce-error-response"
-                  style={{ display: "none" }}
-                ></div>
-                <div
-                  className="text-green-500 text-sm"
-                  id="mce-success-response"
-                  style={{ display: "none" }}
-                ></div>
-              </div>
-
-              {/* Honeypot anti-spam field */}
-              <div
-                aria-hidden="true"
-                style={{ position: "absolute", left: "-5000px" }}
-              >
-                <input
-                  type="text"
-                  name="b_b8008ae86fd8ccf3703b1d1e7_65c7edf8a0"
-                  tabIndex={-1}
-                  defaultValue=""
-                />
-              </div>
-
-              <div className="text-center pt-4">
-                <button
-                  type="submit"
-                  name="subscribe"
-                  id="mc-embedded-subscribe"
-                  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200"
-                >
-                  Subscribe
-                </button>
-              </div>
-            </form>
+              <iframe
+                title="Signup form powered by Zeffy"
+                style={{
+                  position: 'absolute',
+                  border: 0,
+                  top: '-50px',
+                  left: 0,
+                  width: '100%',
+                  height: 'calc(100% + 40px)'
+                }}
+                src="https://www.zeffy.com/en-US/embed/newsletter-form/sign-up-for-our-newsletter-2996"
+              />
+            </div>
           </div>
         </div>
       </section>
