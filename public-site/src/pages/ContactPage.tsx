@@ -55,7 +55,7 @@ export function ContactPage() {
                 position: 'relative',
                 overflow: 'hidden',
                 width: '100%',
-                height: '320px'
+                height: '185px'
               }}
             >
               <iframe
