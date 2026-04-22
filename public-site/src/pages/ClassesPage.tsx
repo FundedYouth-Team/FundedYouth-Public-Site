@@ -143,7 +143,7 @@ export function ClassesPage() {
         const params = new URLSearchParams({
           status: "live",
           order_by: "start_asc",
-          time_filter: "current_future",
+          "start_date.range_start": new Date().toISOString().split(".")[0] + "Z",
           expand: "venue,ticket_availability,logo",
         });
 
