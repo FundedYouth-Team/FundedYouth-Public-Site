@@ -140,34 +140,42 @@ export function ClassesPage() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const params = new URLSearchParams({
-          status: "live",
-          order_by: "start_asc",
-          "start_date.range_start": new Date().toISOString().split(".")[0] + "Z",
-          expand: "venue,ticket_availability,logo",
+        // Eventbrite's /organizations/{id}/events/ endpoint ignores status, time_filter,
+        // and start_date.range_start — so we paginate through all events and filter client-side.
+        const allEvents: EventbriteEvent[] = [];
+        let continuation: string | undefined;
+        const maxPages = 10;
+
+        for (let page = 0; page < maxPages; page++) {
+          const params = new URLSearchParams({
+            order_by: "start_asc",
+            expand: "venue,ticket_availability,logo",
+          });
+          if (continuation) params.set("continuation", continuation);
+
+          const response = await fetch(
+            `/api/eventbrite/v3/organizations/${EVENTBRITE_ORG_ID}/events/?${params}`
+          );
+
+          if (!response.ok) throw new Error("Failed to fetch events");
+
+          const data = await response.json();
+          if (Array.isArray(data.events)) allEvents.push(...data.events);
+
+          if (!data.pagination?.has_more_items) break;
+          continuation = data.pagination.continuation;
+          if (!continuation) break;
+        }
+
+        const now = new Date();
+        now.setHours(0, 0, 0, 0);
+
+        const filteredEvents = allEvents.filter((event) => {
+          if (!event.start?.local) return false;
+          return new Date(event.start.local) >= now;
         });
 
-        const response = await fetch(
-          `/api/eventbrite/v3/organizations/${EVENTBRITE_ORG_ID}/events/?${params}`
-        );
-
-        if (!response.ok) throw new Error("Failed to fetch events");
-
-        const data = await response.json();
-
-        if (data.events && Array.isArray(data.events)) {
-          // Filter to only show events from today onwards
-          const now = new Date();
-          now.setHours(0, 0, 0, 0);
-
-          const filteredEvents = data.events.filter((event: EventbriteEvent) => {
-            if (!event.start?.local) return false;
-            const eventDate = new Date(event.start.local);
-            return eventDate >= now;
-          });
-
-          setEvents(filteredEvents);
-        }
+        setEvents(filteredEvents);
       } catch (err) {
         console.error("Failed to fetch events:", err);
       } finally {
