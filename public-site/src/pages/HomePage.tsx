@@ -9,7 +9,7 @@ export function HomePage() {
     <>
       <HeroWithFloatingVideo
         youtubeVideoId="CNUJpwsbtIQ"
-        floatingVideoUrl="https://www.youtube.com/watch?v=-tcb2K4tT10"
+        floatingVideoUrl="https://www.youtube.com/watch?v=El7hsyvZF1Q"
         videoThumbnailUrl="https://ps-cdn.fundedyouth.org/assets/images/micro-mech-kits.png"
         playButtonColor="bg-pink-600 hover:bg-pink-700"
       >
