@@ -1,12 +1,26 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { HeroWithFloatingVideo } from '../components/HeroWithFloatingVideo'
 import { FeatureCard } from '../components/FeatureCard'
 import { TaglineBanner } from '../components/TaglineBanner'
 import { FeatureShowcase } from '../components/FeatureShowcase'
+import { PromoPopup } from '../components/PromoPopup'
 
 export function HomePage() {
+  const navigate = useNavigate()
+
   return (
     <>
+      <PromoPopup
+        title="Introducing the FundedYouth Portal"
+        description="Lower pricing, accelerated pathways, and progress tracking — all in one place. Create your free account today."
+        image="https://portal.fundedyouth.org/assets/user-portal-dark.png"
+        actionLabel="Check it out"
+        position="bottom-right"
+        storageKey="home-portal-promo-dismissed"
+        autoOpenDelay={1500}
+        onAction={() => navigate('/classes#courses')}
+      />
+
       <HeroWithFloatingVideo
         youtubeVideoId="El7hsyvZF1Q"
         floatingVideoUrl="https://www.youtube.com/watch?v=-tcb2K4tT10"
