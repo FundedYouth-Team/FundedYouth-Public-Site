@@ -1,5 +1,84 @@
 import { useEffect, useState } from "react";
 
+interface OnboardingStep {
+  title: string;
+  description: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+const onboardingSteps: OnboardingStep[] = [
+  {
+    title: "Create Your Account",
+    description:
+      "Sign up with your name, email, grade, and password. Pick a username or let us make one for you. If you are under 13, use a parent or guardian's email and add an emergency contact phone number.",
+    image:
+      "https://cdn.fundedyouth.org/public-site/user-portal-simple-sign-up-form-coppa-compliant.png",
+    imageAlt: "user portal simple sign up form",
+  },
+  {
+    title: "Verify Your Email",
+    description:
+      "Check your inbox for an email from us. Click the link inside to turn on your account.",
+    image:
+      "https://cdn.fundedyouth.org/public-site/user-portal-email-confirmation-v2.png",
+    imageAlt: "user portal confirm email",
+  },
+  {
+    title: "Parental Consent",
+    description:
+      "If you are under 13, your parent or guardian will get an extra email. They must click the link to turn on your account. This keeps you safe and follows COPPA rules.",
+    image:
+      "https://cdn.fundedyouth.org/public-site/user-portal-email-parental-consent-v2.png",
+    imageAlt: "email parental consent for user under 13 years of age",
+  },
+  {
+    title: "Sign in and Sign Portal Agreements",
+    description:
+      "After you log in, you will see the Agreements Menu. Click the `Available` tab, then read and sign the agreements. A few are required to use the portal. If you are under 13, both you and your parent or guardian must sign each one. Only sign the agreements for the services you plan to use.",
+    image: "https://cdn.fundedyouth.org/public-site/user-portal-read-review-and-sign-agreements-v1.png",
+    imageAlt: "Sign Agreements to Use Portal Features"
+  },
+  {
+    title: "Fybit Credits + Subscription & Credit Plan Agreement",
+    description:
+      "Sign the `Subscription & Credit Plan Agreement`. Then buy Fybit Credits under `Credit Packs`. Credits are used for classes, registrations, memberships, and more.",
+    image: "https://cdn.fundedyouth.org/public-site/user-portal-subscription-purchase-credits-v1.png",
+    imageAlt: "Fybit Credits are used for everything",
+  },
+  {
+    title: "Become a Member",
+    description:
+      "Go to Subscriptions → Plans and subscribe to the Basic Membership with your credits. Some memberships come with free add-ons. You need an active membership to spend credits on anything besides memberships.",
+    image: "https://cdn.fundedyouth.org/public-site/user-portal-membership-plan-v1.png",
+    imageAlt: "Subscribe to Basic Membershp",
+  },
+  {
+    title: "Enroll as a Student",
+    description:
+      "Sign the student agreement, then go to Student → My Courses → Browse. Pick a class, course, or workshop and click `Enroll`. Some events need prerequisites first. Your event will be added to `My Courses`, where you can track your progress.",
+    image:
+      "https://cdn.fundedyouth.org/public-site/user-portal-enroll-in-an-event-v1.png",
+    imageAlt: "Enroll in an Event",
+  },
+  {
+    title: "Register for a Session",
+    description:
+      "Open Sessions in the sidebar and pick a class, bootcamp, or workshop. Spend credits to save your spot. Read the cancellation notice — if you cancel late, you may lose your credits. Read the description too. Some classes are split into parts, and the instructor may only cover lessons 1 and 2.",
+    image:
+      "https://cdn.fundedyouth.org/public-site/user-portal-register-for-session-v1.png",
+    imageAlt: "Regiser for session",
+  },
+  {
+    title: "Attending a Session",
+    description:
+      "To move forward in a class, attend the session and finish your assignments. An instructor will then update your account. This is done by hand, so it can take about a day to reflect in the portal.",
+    image:
+      "https://cdn.fundedyouth.org/public-site/user-portal-instructor-assinging-passing-grade-v1.png",
+    imageAlt: "Instructor assigning a passing grade for student",
+  },
+];
+
 interface EventbriteEvent {
   id: string;
   name: { text: string };
@@ -521,7 +600,97 @@ export function ClassesPage() {
         </div>
       </section>
 
+      {/* How to Get Started — vertical step-by-step flow */}
+      <section className="bg-white py-16 md:py-24">
+        <div className="max-w-4xl mx-auto px-4">
+          {/* Section heading */}
+          <div className="text-center mb-12 md:mb-16">
+            <p className="text-emerald-600 text-sm font-semibold tracking-wider uppercase mb-3">
+              Getting Started
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              How to Begin Your Journey
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              A step-by-step guide to set up your account, pick a membership, and register for
+              your first session.
+            </p>
+          </div>
 
+          {/* Vertical timeline */}
+          <div className="relative">
+            {/* Connecting line behind the numbered nodes */}
+            <div className="absolute left-6 md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-blue-500 to-emerald-500"></div>
+
+            <ol className="space-y-8 md:space-y-12">
+              {onboardingSteps.map((step, idx) => (
+                <li key={step.title} className="relative flex gap-4 md:gap-6">
+                  {/* Number node */}
+                  <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-blue-600 text-white font-bold text-xl md:text-2xl flex items-center justify-center shadow-lg ring-4 ring-white relative z-10">
+                    {idx + 1}
+                  </div>
+
+                  {/* Step card */}
+                  <div className="flex-grow bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100">
+                    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed mb-5">{step.description}</p>
+
+                    {/* Screenshot — swap in a real image via step.image */}
+                    {step.image ? (
+                      <img
+                        src={step.image}
+                        alt={step.imageAlt || `${step.title} screenshot`}
+                        className="w-full h-auto rounded-xl border border-gray-200 shadow-sm"
+                      />
+                    ) : (
+                      <div className="aspect-video w-full bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex flex-col items-center justify-center text-gray-400 border border-dashed border-gray-300">
+                        <svg
+                          className="w-10 h-10 mb-2"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
+                        </svg>
+                        <span className="text-xs font-medium uppercase tracking-wider">
+                          Screenshot placeholder
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          {/* Final CTA */}
+          <div className="text-center mt-12 md:mt-16">
+            <a
+              href="https://portal.fundedyouth.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-2xl transition-colors shadow-lg hover:shadow-xl"
+            >
+              Get Started in the Portal
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
