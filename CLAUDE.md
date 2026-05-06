@@ -57,11 +57,25 @@ If you add a new upstream API, mirror this pattern: Vite proxy for dev + a match
 
 ### Static assets
 
-Images and media are served from a Cloudflare R2 CDN at `https://ps-cdn.fundedyouth.org/assets/...` (see recent commits `e5c5cba` / `fc2c3d1`). Reference CDN URLs directly in JSX rather than importing local files; the `public/assets/` directory holds only small data (e.g. [catalog.json](public-site/public/assets/data/catalog.json)) and icons.
+Images and media are served from a Cloudflare R2 CDN at `https://ps-cdn.fundedyouth.org/assets/...`. Reference CDN URLs directly in JSX rather than importing local files; the `public/assets/` directory holds only small data (e.g. [catalog.json](public-site/public/assets/data/catalog.json)) and icons.
 
 ### Content data
 
 Learning pathways, courses, and similar static content live in [public-site/public/assets/data/catalog.json](public-site/public/assets/data/catalog.json) and are fetched at runtime. Update JSON rather than hardcoding lists in components.
+
+## Claude Code configuration (`.claude/`)
+
+Project-scoped Claude Code config lives in [.claude/](.claude/). The `.claude/*` ignore rules in [.gitignore](.gitignore) are currently commented out, so the whole directory — including `settings.local.json` — is tracked.
+
+- [.claude/settings.local.json](.claude/settings.local.json) — permission allowlist (currently pre-approves `pnpm install`, `pnpm rebuild better-sqlite3 esbuild`, `pnpm build`, `pnpm lint`). Edit via the `/permissions` UI or the `update-config` skill.
+- [.claude/skills/](.claude/skills/) — project skills invokable via `/<name>`:
+  - `caveman-mode.md` — ultra-compressed output (`/caveman lite|full|ultra`).
+  - `compress-docs.md` — compress `.md`/`.txt` files into terse format while preserving substance.
+  - `terse-commits.md` — Conventional Commits, no fluff, why-over-what.
+  - `terse-reviews.md` — one-line-per-finding code review style (location, problem, fix).
+- [.claude/tools/new_git_commit.md](.claude/tools/new_git_commit.md) — house rule: when generating a commit, produce a short title + markdown description in code blocks.
+
+When adding a new skill, drop a `.md` file into `.claude/skills/` with a `# Title` and rules; it becomes available as `/<filename>` automatically.
 
 ## Notes when editing
 

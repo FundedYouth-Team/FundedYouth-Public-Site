@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm install)",
+      "Bash(pnpm rebuild better-sqlite3 esbuild)",
+      "Bash(pnpm build)",
+      "Bash(pnpm lint)"
+    ]
+  }
+}
