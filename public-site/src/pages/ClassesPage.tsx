@@ -294,183 +294,6 @@ export function ClassesPage() {
         </div>
       </section>
 
-      {/* Upcoming Events Section */}
-      <section id="upcoming" className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          {/* Section Header */}
-          <div className="text-center mb-12">
-            <p className="text-emerald-600 text-sm font-semibold tracking-wider uppercase mb-2">
-              Upcoming Events
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              What's Happening Next
-            </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Register for upcoming classes and events. Space is limited—secure your spot today.
-            </p>
-          </div>
-
-          {/* Events from Eventbrite */}
-          <div className="space-y-4 max-w-4xl mx-auto">
-            {loading ? (
-              <div className="text-center py-8">
-                <p className="text-gray-500">Loading events...</p>
-              </div>
-            ) : events.length > 0 ? (
-              events.map((event) => {
-                const ticketInfo = getTicketInfo(event);
-                return (
-                  <div
-                    key={event.id}
-                    className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-shadow"
-                  >
-                    {/* Mobile Layout */}
-                    <div className="md:hidden">
-                      <div className="w-full h-40 rounded-lg overflow-hidden bg-gray-100 mb-4">
-                        <img
-                          src={getEventImage(event)}
-                          alt={event.name.text}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="flex gap-4">
-                        <div className="flex-shrink-0 text-center w-14">
-                          {event.start?.local && (
-                            <>
-                              <div className="text-blue-600 font-bold text-sm">
-                                {getMonthAbbr(event.start.local)}
-                              </div>
-                              <div className="text-gray-900 font-bold text-2xl">
-                                {getDayOfMonth(event.start.local)}
-                              </div>
-                            </>
-                          )}
-                        </div>
-                        <div className="flex-grow min-w-0">
-                          <h3 className="font-bold text-gray-900 text-lg mb-1">
-                            {event.name.text}
-                          </h3>
-                          <p className="text-gray-600 text-sm mb-1">{getVenueAddress(event)}</p>
-                          {event.start?.local && (
-                            <p className="text-gray-500 text-sm mb-2">
-                              {getFormattedDateTime(event.start.local)}
-                            </p>
-                          )}
-                          <div className="flex items-center gap-3 flex-wrap">
-                            {ticketInfo.available ? (
-                              <>
-                                <span className="text-green-600 text-sm font-medium">
-                                  {ticketInfo.text}
-                                </span>
-                                <a
-                                  href={`${event.url}#tickets`}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium px-4 py-1.5 rounded-lg transition-colors"
-                                >
-                                  Get Tickets
-                                </a>
-                              </>
-                            ) : (
-                              <span className="text-red-500 text-sm font-medium">
-                                {ticketInfo.text}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Desktop Layout */}
-                    <div className="hidden md:flex gap-4">
-                      <div className="flex-shrink-0 text-center w-14">
-                        {event.start?.local && (
-                          <>
-                            <div className="text-blue-600 font-bold text-sm">
-                              {getMonthAbbr(event.start.local)}
-                            </div>
-                            <div className="text-gray-900 font-bold text-2xl">
-                              {getDayOfMonth(event.start.local)}
-                            </div>
-                          </>
-                        )}
-                      </div>
-                      <div className="flex-shrink-0 w-32 h-24 rounded-lg overflow-hidden bg-gray-100">
-                        <img
-                          src={getEventImage(event)}
-                          alt={event.name.text}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="flex-grow min-w-0">
-                        <h3 className="font-bold text-gray-900 text-lg mb-1">{event.name.text}</h3>
-                        <p className="text-gray-600 text-sm mb-1">{getVenueAddress(event)}</p>
-                        {event.start?.local && (
-                          <p className="text-gray-500 text-sm mb-2">
-                            {getFormattedDateTime(event.start.local)}
-                          </p>
-                        )}
-                        <div className="flex items-center gap-4 flex-wrap">
-                          {ticketInfo.available ? (
-                            <span className="text-green-600 text-sm font-medium">
-                              {ticketInfo.text}
-                            </span>
-                          ) : (
-                            <span className="text-red-500 text-sm font-medium">
-                              {ticketInfo.text}
-                            </span>
-                          )}
-                          <a
-                            href={event.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors"
-                          >
-                            View event
-                            <svg
-                              className="w-4 h-4"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                              />
-                            </svg>
-                          </a>
-                          {ticketInfo.available && (
-                            <a
-                              href={`${event.url}#tickets`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium px-4 py-1.5 rounded-lg transition-colors"
-                            >
-                              Get Tickets
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })
-            ) : (
-              <div className="text-center py-8">
-                <img
-                  src="https://ps-cdn.fundedyouth.org/assets/images/coming-soon.png"
-                  alt="Coming Soon"
-                  className="mx-auto mb-4 max-w-xs"
-                />
-                <p className="text-gray-500">No upcoming events at this time. Check back soon!</p>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
-
       {/* FundedYouth Portal Section — mirrors portal.fundedyouth.org hero */}
       <section id="courses" className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
@@ -688,6 +511,183 @@ export function ClassesPage() {
                 />
               </svg>
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Events Section */}
+      <section id="upcoming" className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <p className="text-emerald-600 text-sm font-semibold tracking-wider uppercase mb-2">
+              Upcoming Events
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              What's Happening Next
+            </h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Register for upcoming classes and events. Space is limited—secure your spot today.
+            </p>
+          </div>
+
+          {/* Events from Eventbrite */}
+          <div className="space-y-4 max-w-4xl mx-auto">
+            {loading ? (
+              <div className="text-center py-8">
+                <p className="text-gray-500">Loading events...</p>
+              </div>
+            ) : events.length > 0 ? (
+              events.map((event) => {
+                const ticketInfo = getTicketInfo(event);
+                return (
+                  <div
+                    key={event.id}
+                    className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-lg transition-shadow"
+                  >
+                    {/* Mobile Layout */}
+                    <div className="md:hidden">
+                      <div className="w-full h-40 rounded-lg overflow-hidden bg-gray-100 mb-4">
+                        <img
+                          src={getEventImage(event)}
+                          alt={event.name.text}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex gap-4">
+                        <div className="flex-shrink-0 text-center w-14">
+                          {event.start?.local && (
+                            <>
+                              <div className="text-blue-600 font-bold text-sm">
+                                {getMonthAbbr(event.start.local)}
+                              </div>
+                              <div className="text-gray-900 font-bold text-2xl">
+                                {getDayOfMonth(event.start.local)}
+                              </div>
+                            </>
+                          )}
+                        </div>
+                        <div className="flex-grow min-w-0">
+                          <h3 className="font-bold text-gray-900 text-lg mb-1">
+                            {event.name.text}
+                          </h3>
+                          <p className="text-gray-600 text-sm mb-1">{getVenueAddress(event)}</p>
+                          {event.start?.local && (
+                            <p className="text-gray-500 text-sm mb-2">
+                              {getFormattedDateTime(event.start.local)}
+                            </p>
+                          )}
+                          <div className="flex items-center gap-3 flex-wrap">
+                            {ticketInfo.available ? (
+                              <>
+                                <span className="text-green-600 text-sm font-medium">
+                                  {ticketInfo.text}
+                                </span>
+                                <a
+                                  href={`${event.url}#tickets`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium px-4 py-1.5 rounded-lg transition-colors"
+                                >
+                                  Get Tickets
+                                </a>
+                              </>
+                            ) : (
+                              <span className="text-red-500 text-sm font-medium">
+                                {ticketInfo.text}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Desktop Layout */}
+                    <div className="hidden md:flex gap-4">
+                      <div className="flex-shrink-0 text-center w-14">
+                        {event.start?.local && (
+                          <>
+                            <div className="text-blue-600 font-bold text-sm">
+                              {getMonthAbbr(event.start.local)}
+                            </div>
+                            <div className="text-gray-900 font-bold text-2xl">
+                              {getDayOfMonth(event.start.local)}
+                            </div>
+                          </>
+                        )}
+                      </div>
+                      <div className="flex-shrink-0 w-32 h-24 rounded-lg overflow-hidden bg-gray-100">
+                        <img
+                          src={getEventImage(event)}
+                          alt={event.name.text}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-grow min-w-0">
+                        <h3 className="font-bold text-gray-900 text-lg mb-1">{event.name.text}</h3>
+                        <p className="text-gray-600 text-sm mb-1">{getVenueAddress(event)}</p>
+                        {event.start?.local && (
+                          <p className="text-gray-500 text-sm mb-2">
+                            {getFormattedDateTime(event.start.local)}
+                          </p>
+                        )}
+                        <div className="flex items-center gap-4 flex-wrap">
+                          {ticketInfo.available ? (
+                            <span className="text-green-600 text-sm font-medium">
+                              {ticketInfo.text}
+                            </span>
+                          ) : (
+                            <span className="text-red-500 text-sm font-medium">
+                              {ticketInfo.text}
+                            </span>
+                          )}
+                          <a
+                            href={event.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors"
+                          >
+                            View event
+                            <svg
+                              className="w-4 h-4"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                              />
+                            </svg>
+                          </a>
+                          {ticketInfo.available && (
+                            <a
+                              href={`${event.url}#tickets`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium px-4 py-1.5 rounded-lg transition-colors"
+                            >
+                              Get Tickets
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div className="text-center py-8">
+                <img
+                  src="https://ps-cdn.fundedyouth.org/assets/images/coming-soon.png"
+                  alt="Coming Soon"
+                  className="mx-auto mb-4 max-w-xs"
+                />
+                <p className="text-gray-500">No upcoming events at this time. Check back soon!</p>
+              </div>
+            )}
           </div>
         </div>
       </section>
