@@ -30,7 +30,7 @@ Package manager: pnpm 10.11 (enforced via `packageManager` field). Node >=18.
 
 - React 18 + TypeScript + Vite (SWC plugin), Tailwind 3, React Router v7, happy-dom for tests.
 - Entry [src/index.tsx](public-site/src/index.tsx) mounts `<App />` from [src/App.tsx](public-site/src/App.tsx).
-- All routes are defined in [App.tsx](public-site/src/App.tsx). The layout branches on pathname: `/courses/:courseId` renders **without** Header/Footer (full-page course experience); every other route is wrapped in `<Header>` + `<Footer>`. When adding a new route, decide which branch it belongs in.
+- All routes are defined in [App.tsx](public-site/src/App.tsx). Every route is wrapped in `<Header>` + `<Footer>`. Legacy URLs are redirected via `<Navigate>` elements (e.g. `/classes` → `/learn`, `/catalog` → `/learn`, `/sessions` → `/schedule`).
 - `<ScrollToTop>` sits outside `<Routes>` and resets scroll on navigation.
 - TS `baseUrl` is `./src`, so prefer `import X from "components/X"` over relative paths. `vite-tsconfig-paths` makes this work in dev and tests.
 
@@ -42,26 +42,32 @@ Package manager: pnpm 10.11 (enforced via `packageManager` field). Node >=18.
 
 ### API proxying (two environments, same URL shape)
 
-The client always calls `/api/eventbrite/...` and `/api/blog/...`. Two different mechanisms serve these paths depending on environment:
+The client calls `/api/calendar/...` and `/api/blog/...`. Two different mechanisms serve these paths depending on environment:
 
-1. **Dev** — [public-site/vite.config.ts](public-site/vite.config.ts) defines Vite `server.proxy` entries. The eventbrite proxy injects `Authorization: Bearer ${EVENTBRITE_PRIVATE_TOKEN}` at proxy time so the token never ships to the browser.
-2. **Production (Cloudflare Pages)** — [public-site/functions/api/eventbrite/[[path]].ts](public-site/functions/api/eventbrite/[[path]].ts) is a Pages Function that forwards the same paths to `eventbriteapi.com` with the token read from Cloudflare env bindings.
+1. **Dev** — [public-site/vite.config.ts](public-site/vite.config.ts) defines Vite `server.proxy` entries that rewrite + forward to the upstream origin (e.g. `cdn.fundedyouth.org/feeds/calendar`).
+2. **Production (Cloudflare Pages)** — files under [public-site/functions/api/](public-site/functions/api/) are Pages Functions that forward the same paths and add CORS headers (e.g. [functions/api/calendar/[[path]].ts](public-site/functions/api/calendar/[[path]].ts)).
 
-If you add a new upstream API, mirror this pattern: Vite proxy for dev + a matching Pages Function under `functions/api/` for prod. Do not ship secrets to the client.
+If you add a new upstream API, mirror this pattern: Vite proxy for dev + a matching Pages Function under `functions/api/` for prod. Use proxies when the upstream lacks CORS, or when secrets need to stay server-side.
 
 ### Environment variables
 
-- `VITE_EVENTBRITE_ORGANIZATION_ID` — public, exposed to the browser via `import.meta.env`.
-- `EVENTBRITE_PRIVATE_TOKEN` — server-only; used by both the Vite dev proxy and the Cloudflare Pages Function. Never prefix with `VITE_`.
-- See [public-site/.env.example](public-site/.env.example).
+Currently no env vars are required. If you add one, prefix browser-exposed vars with `VITE_` and document the server-only counterparts in a new `.env.example`.
 
 ### Static assets
 
-Images and media are served from a Cloudflare R2 CDN at `https://ps-cdn.fundedyouth.org/assets/...`. Reference CDN URLs directly in JSX rather than importing local files; the `public/assets/` directory holds only small data (e.g. [catalog.json](public-site/public/assets/data/catalog.json)) and icons.
+Images and media are served from a Cloudflare R2 CDN at `https://ps-cdn.fundedyouth.org/assets/...`. Reference CDN URLs directly in JSX rather than importing local files.
 
 ### Content data
 
-Learning pathways, courses, and similar static content live in [public-site/public/assets/data/catalog.json](public-site/public/assets/data/catalog.json) and are fetched at runtime. Update JSON rather than hardcoding lists in components.
+Most public content is hardcoded in the page components (the homepage course cards, the Learn page pathway, etc.) since the set is small and stable. Live session data comes from the calendar feed at `https://cdn.fundedyouth.org/feeds/calendar/sessions.json` (proxied via `/api/calendar/`). Detailed per-course documentation lives at `docs.fundedyouth.org`.
+
+### SEO
+
+[src/lib/useSeo.ts](public-site/src/lib/useSeo.ts) is the shared hook for per-page SEO. Each page calls `useSeo({ title, description, url, schema })` to manage `<title>`, meta tags, canonical link, and one JSON-LD block. Site-wide Organization + WebSite schema lives directly in [index.html](public-site/index.html). Crawler files: [public/robots.txt](public-site/public/robots.txt), [public/sitemap.xml](public-site/public/sitemap.xml).
+
+### Content swaps awaiting real data
+
+See [public-site/CONTENT-TODOS.md](public-site/CONTENT-TODOS.md). Currently lists: homepage testimonials section (hidden behind a JSX comment until real quotes are supplied).
 
 ## Claude Code configuration (`.claude/`)
 

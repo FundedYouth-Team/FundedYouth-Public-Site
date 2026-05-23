@@ -1,12 +1,10 @@
 /// <reference types="vitest" />
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 // https://vitejs.dev/config https://vitest.dev/config
-export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), "");
-
+export default defineConfig(() => {
   return {
     plugins: [react(), tsconfigPaths()],
     server: {
@@ -16,18 +14,10 @@ export default defineConfig(({ mode }) => {
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api\/blog/, "/blog"),
         },
-        "/api/eventbrite": {
-          target: "https://www.eventbriteapi.com",
+        "/api/calendar": {
+          target: "https://cdn.fundedyouth.org",
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api\/eventbrite/, ""),
-          configure: (proxy) => {
-            proxy.on("proxyReq", (proxyReq) => {
-              proxyReq.setHeader(
-                "Authorization",
-                `Bearer ${env.EVENTBRITE_PRIVATE_TOKEN}`
-              );
-            });
-          },
+          rewrite: (path) => path.replace(/^\/api\/calendar/, "/feeds/calendar"),
         },
       },
     },

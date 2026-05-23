@@ -3,12 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 
 const menuItems = [
   { label: "Home", href: "/", page: "" },
-  { label: "Learn", href: "/classes", page: "classes" },
-  { label: "Get Involved", href: "/volunteer", page: "volunteer" },
-  { label: "Adventures", href: "/adventures", page: "adventures" },
-  { label: "Impact", href: "/impact", page: "impact" },
-  { label: "Donate", href: "/donate", page: "donate" },
+  { label: "Learn", href: "/learn", page: "learn" },
+  { label: "Schedule", href: "/schedule", page: "schedule" },
+  { label: "Competitions", href: "/competitions", page: "competitions" },
+  { label: "For Schools", href: "/teachers", page: "teachers" },
 ];
+
+const PORTAL_URL = "https://portal.fundedyouth.org/";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -66,12 +67,17 @@ export function Header() {
 
             {/* Desktop Buttons */}
             <div className="hidden lg:flex items-center space-x-4">
-              <Link
-                to="/contact"
-                className="bg-white text-blue-600 hover:bg-white/90 px-4 py-2 rounded-lg font-medium transition-colors"
+              <a
+                href={PORTAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white text-blue-600 hover:bg-white/90 px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center gap-1.5"
               >
-                Contact Us
-              </Link>
+                Sign In
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
             </div>
 
             {/* Mobile Hamburger Menu */}
@@ -178,13 +184,18 @@ export function Header() {
 
             {/* Mobile Menu Actions */}
             <div className="px-6 py-6 border-t border-gray-200">
-              <Link
-                to="/contact"
-                className="block w-full text-center py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
+              <a
+                href={PORTAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex w-full items-center justify-center gap-2 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
                 onClick={closeMobileMenu}
               >
-                Contact Us
-              </Link>
+                Sign In
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>

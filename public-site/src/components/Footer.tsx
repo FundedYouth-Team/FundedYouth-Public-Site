@@ -121,10 +121,18 @@ export function Footer() {
             <ul className="space-y-1 md:space-y-2 text-xs md:text-sm">
               <li>
                 <Link
-                  to="/catalog"
+                  to="/learn"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  STEM Education
+                  Courses &amp; Workshops
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/competitions"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Competitions &amp; Teams
                 </Link>
               </li>
               <li>
@@ -132,7 +140,7 @@ export function Footer() {
                   to="/volunteer"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  Mentorship
+                  Mentor &amp; Volunteer
                 </Link>
               </li>
               <li>
@@ -140,15 +148,7 @@ export function Footer() {
                   to="/donate"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  Fundraising
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/classes"
-                  className="hover:text-blue-400 transition-colors"
-                >
-                  Workshops
+                  Donate &amp; Fundraise
                 </Link>
               </li>
             </ul>
@@ -168,14 +168,6 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/impact#board"
-                  className="hover:text-blue-400 transition-colors"
-                >
-                  Team
-                </Link>
-              </li>
-              <li>
-                <Link
                   to="/impact"
                   className="hover:text-blue-400 transition-colors"
                 >
@@ -184,10 +176,18 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  to="/adventures"
+                  to="/faq"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  Adventures
+                  FAQs
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/get-started"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Setup Guide
                 </Link>
               </li>
             </ul>
@@ -203,14 +203,6 @@ export function Footer() {
                   className="hover:text-blue-400 transition-colors"
                 >
                   Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className="hover:text-blue-400 transition-colors"
-                >
-                  Newsletter
                 </Link>
               </li>
               <li>
@@ -239,19 +231,32 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-400">
-            &copy; {currentYear} FundedYouth. All rights reserved.
-          </p>
+          <div className="text-sm text-gray-400 text-center md:text-left">
+            <p>
+              &copy; {currentYear} FundedYouth. All rights reserved.
+            </p>
+            <p className="mt-1 text-xs text-gray-500">
+              501(c)(3) Nonprofit
+              <span className="mx-1.5" aria-hidden="true">·</span>
+              EIN <span className="font-mono">93-4090260</span>
+              <span className="mx-1.5" aria-hidden="true">·</span>
+              Donations may be tax-deductible
+            </p>
+          </div>
 
           <div className="flex space-x-6">
             <a
-              href="#"
+              href="https://docs.fundedyouth.org/legal/privacy-policy/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm hover:text-blue-400 transition-colors"
             >
               Privacy Policy
             </a>
             <a
-              href="#"
+              href="https://docs.fundedyouth.org/legal/terms-of-service/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm hover:text-blue-400 transition-colors"
             >
               Terms of Service
