@@ -4,7 +4,7 @@ import { VideoCard } from '../components/VideoCard'
 import { VideoPlayer } from '../components/VideoPlayer'
 import { useSeo } from '../lib/useSeo'
 
-const WALKTHROUGH_VIDEO_URL = 'https://www.youtube.com/watch?v=-tcb2K4tT10'
+const WALKTHROUGH_VIDEO_URL = 'https://www.youtube.com/watch?v=dn12wiDpEu4'
 const WALKTHROUGH_THUMBNAIL =
   'https://portal.fundedyouth.org/assets/user-portal-dark.png'
 
