@@ -620,7 +620,7 @@ export function HomePage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-         SECTION 4 — MEMBERSHIP + FYBIT PACKS
+         SECTION 4 — MEMBERSHIP
          ───────────────────────────────────────────────────────────── */}
       <section
         id="memberships"
@@ -632,193 +632,54 @@ export function HomePage() {
               Memberships
             </span>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
-              Pick a plan, unlock the platform
+              One simple subscription
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-              One simple plan, included printer access, and optional add-ons —
-              all paid from your FYBITS wallet.
+              Get 10 FYBIT credits delivered every month — spend them across the
+              platform on courses, sessions, and printer time.
             </p>
           </div>
 
-          {/* Basic membership card */}
-          <div className="mx-auto max-w-5xl">
-            <div className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
-              {/* Accent bar */}
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400" />
-              <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-5 lg:gap-12">
-                {/* Plan summary */}
-                <div className="lg:col-span-2">
-                  <div className="flex items-center justify-between">
-                    <p className="text-sm font-semibold uppercase tracking-wider text-blue-600">
-                      Basic Membership
-                    </p>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-1 text-[11px] font-semibold text-green-700">
-                      <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
-                      Active
-                    </span>
-                  </div>
-                  <div className="mt-4 flex items-baseline gap-2">
-                    <span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-5xl font-extrabold text-transparent">
-                      10
-                    </span>
-                    <div>
-                      <p className="text-sm font-bold text-gray-900">
-                        credits
-                      </p>
-                      <p className="text-xs text-gray-500">/ month from wallet</p>
-                    </div>
-                  </div>
-                  <p className="mt-4 text-sm leading-relaxed text-gray-600">
-                    Grants access to register for sessions, purchase credit
-                    packs, and subscribe to add-ons.
-                  </p>
-                  <div className="mt-5 rounded-lg border border-green-200 bg-green-50 p-3">
-                    <p className="flex items-start gap-2 text-sm font-semibold text-green-800">
-                      <svg
-                        className="mt-0.5 h-4 w-4 shrink-0 text-green-600"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <span>
-                        4 intro courses included free
-                        <span className="block font-normal text-green-700">
-                          3DP1 · 3DP2 · 3DM1 · CDE1
-                        </span>
-                      </span>
-                    </p>
-                  </div>
-                  <a
-                    href="https://portal.fundedyouth.org"
-                    className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700"
+          <div className="mx-auto max-w-md">
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md">
+              <div className="flex items-start gap-3">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-700">
+                  <svg
+                    className="h-5 w-5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
                   >
-                    Activate Membership
-                    <svg
-                      className="h-4 w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
-                      />
-                    </svg>
-                  </a>
-                  <p className="mt-3 text-center text-xs text-gray-500">
-                    Pay with FYBITS · cancel anytime
-                  </p>
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
                 </div>
-
-                {/* Included add-ons */}
-                <div className="lg:col-span-3">
-                  <div className="flex items-center justify-between">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-                      Included Add-Ons
-                    </p>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-emerald-700">
-                      No extra charge
-                    </span>
-                  </div>
-                  <ul className="mt-3 space-y-2">
-                    {[
-                      {
-                        name: 'Sovol 1-Credit / 1-Hour',
-                        desc: 'Print on Sovol printers for just 1 credit per hour.',
-                      },
-                      {
-                        name: 'Bambu 2-Credits / 1-Hour',
-                        desc: 'All Bambu printers, including multi-material, for 2 credits per hour.',
-                      },
-                    ].map((addon) => (
-                      <li
-                        key={addon.name}
-                        className="flex items-start gap-3 rounded-lg border border-emerald-100 bg-emerald-50/50 px-3 py-2.5"
-                      >
-                        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100">
-                          <svg
-                            className="h-3.5 w-3.5 text-emerald-700"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={3}
-                              d="M5 13l4 4L19 7"
-                            />
-                          </svg>
-                        </span>
-                        <div className="min-w-0">
-                          <p className="text-sm font-semibold text-gray-900">
-                            {addon.name}
-                          </p>
-                          <p className="text-xs text-gray-600">{addon.desc}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-3 text-xs text-gray-500">
-                    Non-members pay <span className="font-semibold">$3/hour</span>{' '}
-                    for all prints.
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-base font-bold text-gray-900">
+                    10 FYBIT Credits | Monthly
+                  </h3>
+                  <p className="mt-1 text-sm leading-relaxed text-gray-600">
+                    (No bonus credits) This is a non-refundable purchase.
+                    Credits cannot be exchanged for cash or real currency.
                   </p>
-
-                  <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-gray-500">
-                    Also includes
-                  </p>
-                  <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                    {[
-                      'Register for sessions',
-                      'Buy FYBIT credit packs',
-                      'Subscribe to add-ons',
-                      'Progress tracking',
-                    ].map((benefit) => (
-                      <li
-                        key={benefit}
-                        className="flex items-center gap-2 text-sm text-gray-700"
-                      >
-                        <svg
-                          className="h-4 w-4 shrink-0 text-blue-600"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        {benefit}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </div>
-            </div>
-          </div>
-
-          {/* FYBIT Credit Packs */}
-          <div className="mt-20">
-            <div className="mb-8 flex flex-col items-center text-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-700">
-                Credit Packs
-              </span>
-              <h3 className="mt-4 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                Need more FYBITS? Power up with a pack.
-              </h3>
-              <p className="mt-3 max-w-xl text-base text-gray-600">
-                Stock up on credits anytime — for the monthly membership,
-                additional courses, printer time, or optional add-ons.
-              </p>
-              <p className="mt-3 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
+              <div className="mt-5 flex items-baseline justify-between border-t border-gray-100 pt-4">
+                <div>
+                  <span className="text-3xl font-extrabold text-blue-600">
+                    $10.00
+                  </span>
+                  <span className="text-sm font-medium text-gray-500">/mo</span>
+                </div>
+                <p className="text-base font-bold text-amber-600">
+                  10 credits/mo
+                </p>
+              </div>
+              <a
+                href="https://portal.fundedyouth.org"
+                className="mt-5 inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-amber-400 to-orange-500 px-4 py-3 text-base font-semibold text-white shadow-md transition-all hover:from-amber-500 hover:to-orange-600"
+              >
+                Subscribe
+              </a>
+              <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-gray-500">
                 <svg
                   className="h-3.5 w-3.5"
                   fill="none"
@@ -832,299 +693,9 @@ export function HomePage() {
                     d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
                   />
                 </svg>
-                Packs are purchased securely inside the portal after sign-in
+                Card information is securely stored by Stripe
               </p>
             </div>
-
-            {/* One-Time Packs */}
-            <div className="mb-4 flex items-center gap-3">
-              <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-                One-Time Packs
-              </p>
-              <span className="h-px flex-1 bg-gray-200" />
-            </div>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-              {[
-                {
-                  name: '10 FYBIT Credits',
-                  price: '$10',
-                  credits: 10,
-                  bonus: 0,
-                  desc: 'Starter top-up. Covers a month of membership with leftover for prints.',
-                },
-                {
-                  name: '20 FYBIT Credits',
-                  price: '$12',
-                  credits: 17,
-                  bonus: 5,
-                  desc: 'Includes 5 bonus credits — best value for one-time top-ups.',
-                  highlight: true,
-                },
-              ].map((pack) => (
-                <div
-                  key={pack.name}
-                  className={`group relative overflow-hidden rounded-2xl border bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg ${
-                    pack.highlight
-                      ? 'border-amber-300 ring-2 ring-amber-200'
-                      : 'border-gray-200'
-                  }`}
-                >
-                  {pack.highlight && (
-                    <span className="absolute -top-px right-6 inline-flex rounded-b-md bg-gradient-to-r from-amber-400 to-orange-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow">
-                      +5 bonus credits
-                    </span>
-                  )}
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <div className="flex items-center gap-2 text-sm font-semibold text-amber-700">
-                        <svg
-                          className="h-4 w-4"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                        {pack.name}
-                      </div>
-                      <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                        {pack.desc}
-                      </p>
-                    </div>
-                    <span className="inline-flex shrink-0 rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-600">
-                      One-Time
-                    </span>
-                  </div>
-                  <div className="mt-4 flex items-baseline justify-between border-t border-gray-100 pt-4">
-                    <div>
-                      <span className="text-3xl font-extrabold text-blue-600">
-                        {pack.price}
-                      </span>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-base font-bold text-amber-600">
-                        {pack.credits} credits
-                      </p>
-                      {pack.bonus > 0 && (
-                        <p className="text-[11px] font-semibold text-amber-700">
-                          (incl. +{pack.bonus} bonus)
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                  <a
-                    href="https://portal.fundedyouth.org"
-                    className={`mt-5 inline-flex w-full items-center justify-center gap-1.5 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all ${
-                      pack.highlight
-                        ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-md hover:from-amber-500 hover:to-orange-600'
-                        : 'border border-gray-300 bg-white text-gray-900 hover:border-amber-400 hover:text-amber-700'
-                    }`}
-                  >
-                    Buy on Portal
-                    <svg
-                      className="h-4 w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M13 7l5 5m0 0l-5 5m5-5H6"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              ))}
-            </div>
-
-            {/* Monthly Pack */}
-            <div className="mb-4 mt-8 flex items-center gap-3">
-              <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-                Monthly Packs
-              </p>
-              <span className="h-px flex-1 bg-gray-200" />
-            </div>
-            <div className="relative overflow-hidden rounded-2xl border-2 border-blue-300 bg-gradient-to-br from-blue-50 via-white to-amber-50 p-6 shadow-sm sm:p-8">
-              <span className="absolute -top-px right-6 inline-flex rounded-b-md bg-gradient-to-r from-blue-600 to-blue-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow">
-                Recommended
-              </span>
-              <div className="grid items-center gap-6 sm:grid-cols-3">
-                <div className="sm:col-span-2">
-                  <div className="flex items-center gap-2 text-sm font-semibold text-blue-700">
-                    <svg
-                      className="h-4 w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    25 FYBIT Credits / Monthly
-                  </div>
-                  <p className="mt-2 text-base leading-relaxed text-gray-700">
-                    Get <span className="font-semibold">10 bonus credits</span>{' '}
-                    every month — enough to cover the 10 FYBITS/month
-                    membership with credits left over for prints, courses, and
-                    add-ons.
-                  </p>
-                  <div className="mt-4 flex items-baseline gap-6">
-                    <div>
-                      <span className="text-4xl font-extrabold text-blue-700">
-                        $15
-                      </span>
-                      <span className="text-sm font-medium text-gray-500">
-                        /mo
-                      </span>
-                    </div>
-                    <div>
-                      <p className="text-2xl font-bold text-amber-600">
-                        25 credits
-                      </p>
-                      <p className="text-[11px] font-semibold text-amber-700">
-                        delivered each month
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <a
-                  href="https://portal.fundedyouth.org"
-                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-blue-700"
-                >
-                  Subscribe on Portal
-                  <svg
-                    className="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <p className="mt-5 text-center text-xs text-gray-500">
-              All purchases are non-refundable. Credits cannot be exchanged
-              for cash or real currency.
-            </p>
-          </div>
-
-          {/* Optional Add-Ons */}
-          <div className="mt-20">
-            <div className="mb-8 flex flex-col items-center text-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-purple-700">
-                Optional Add-Ons
-              </span>
-              <h3 className="mt-4 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                Subscribe to extras with your FYBITS
-              </h3>
-              <p className="mt-3 max-w-xl text-base text-gray-600">
-                Active members can layer on optional perks. Add-ons are
-                deducted from your wallet each month — cancel anytime and your
-                remaining credits stay yours.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-              {[
-                {
-                  name: 'Filament Hobbyist',
-                  cost: 5,
-                  desc: '30% OFF 3D filament rolls. Confirm price with staff — listed roll prices already reflect active membership plus this add-on.',
-                  icon: (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                    />
-                  ),
-                },
-                {
-                  name: '1-Roll of PLA or PETG / Month',
-                  cost: 10,
-                  desc: 'Pick one roll of PLA or PETG each month. Resets monthly — unused rolls do not roll over.',
-                  icon: (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-                    />
-                  ),
-                },
-              ].map((addon) => (
-                <div
-                  key={addon.name}
-                  className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"
-                >
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-purple-50 text-purple-700">
-                      <svg
-                        className="h-5 w-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        {addon.icon}
-                      </svg>
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <h4 className="text-base font-bold text-gray-900">
-                        {addon.name}
-                      </h4>
-                      <p className="mt-1 text-sm leading-relaxed text-gray-600">
-                        {addon.desc}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="mt-5 flex items-center justify-between border-t border-gray-100 pt-4">
-                    <div className="flex items-baseline gap-1.5">
-                      <span className="text-2xl font-extrabold text-amber-600">
-                        {addon.cost}
-                      </span>
-                      <span className="text-sm font-medium text-gray-600">
-                        credits / month
-                      </span>
-                    </div>
-                    <a
-                      href="https://portal.fundedyouth.org"
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-purple-300 bg-white px-3 py-2 text-sm font-semibold text-purple-700 transition-colors hover:bg-purple-50"
-                    >
-                      Subscribe
-                      <svg
-                        className="h-3.5 w-3.5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M13 7l5 5m0 0l-5 5m5-5H6"
-                        />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <p className="mt-5 text-center text-xs text-gray-500">
-              An active Basic Membership is required to subscribe to add-ons.
-            </p>
           </div>
         </div>
       </section>
