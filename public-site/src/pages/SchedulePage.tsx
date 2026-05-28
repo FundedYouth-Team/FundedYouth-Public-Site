@@ -169,11 +169,257 @@ function getCalendarGrid(monthDate: Date): Date[][] {
 
 const WEEKDAY_LABELS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
+function EventDetailModal({
+  event,
+  onClose,
+}: {
+  event: SessionEvent;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") onClose();
+    }
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [onClose]);
+
+  const s = getStyle(event);
+  const isFull = event.spotsRemaining <= 0;
+  const isCancelled = event.status === "cancelled";
+  const displayName = stripCodePrefix(event.name, event.eventCode);
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="event-modal-title"
+      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-0 backdrop-blur-sm sm:items-center sm:p-4"
+      onClick={onClose}
+    >
+      <div
+        className="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-t-2xl bg-white shadow-xl sm:rounded-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute right-3 top-3 rounded-full p-1.5 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-700"
+        >
+          <svg
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+
+        <div className="p-5 sm:p-6">
+          <div className="flex flex-wrap items-center gap-2 pr-8">
+            <span
+              className={`inline-flex items-center rounded px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${s.badge}`}
+            >
+              {event.type}
+            </span>
+            {event.category && (
+              <span
+                className="inline-flex items-center gap-1.5 rounded border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-gray-800"
+                style={categoryBadgeStyle(event.category.color)}
+              >
+                <span
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{ backgroundColor: event.category.color }}
+                />
+                {event.category.name}
+              </span>
+            )}
+            {isCancelled && (
+              <span className="inline-flex items-center rounded bg-red-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-red-700">
+                Cancelled
+              </span>
+            )}
+          </div>
+
+          <h2
+            id="event-modal-title"
+            className={`mt-3 text-xl font-bold leading-tight ${
+              isCancelled ? "text-gray-500 line-through" : "text-gray-900"
+            }`}
+          >
+            {event.eventCode && (
+              <span className="mr-2 inline-block rounded bg-gray-100 px-1.5 py-0.5 align-middle font-mono text-xs font-semibold text-gray-700">
+                {event.eventCode}
+              </span>
+            )}
+            {displayName}
+          </h2>
+
+          {event.description && (
+            <p className="mt-3 text-sm leading-relaxed text-gray-600">
+              {event.description}
+            </p>
+          )}
+
+          <dl className="mt-4 space-y-2.5 text-sm text-gray-700">
+            <div className="flex items-center gap-2">
+              <svg
+                className="h-4 w-4 shrink-0 text-gray-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              {formatLongDate(event.startTime)}
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                className="h-4 w-4 shrink-0 text-gray-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              {formatTimeRange(event.startTime, event.endTime)}
+              <span className="text-gray-400">
+                · {formatDuration(event.startTime, event.endTime)}
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                className="h-4 w-4 shrink-0 text-gray-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+              {event.location}
+            </div>
+            <div className="flex items-center gap-2">
+              <svg
+                className="h-4 w-4 shrink-0 text-gray-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                />
+              </svg>
+              {event.instructorName}
+            </div>
+            <div
+              className={`flex items-center gap-2 ${isFull ? "text-red-600" : ""}`}
+            >
+              <svg
+                className="h-4 w-4 shrink-0 text-gray-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-5.13a4 4 0 11-8 0 4 4 0 018 0zm6 3a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+              {isFull
+                ? "Full"
+                : `${event.spotsRemaining} spot${
+                    event.spotsRemaining === 1 ? "" : "s"
+                  } left`}
+            </div>
+          </dl>
+
+          {event.requiresMembership && (
+            <p className="mt-3 text-xs font-medium text-blue-700">
+              Active membership required
+            </p>
+          )}
+
+          <a
+            href={event.registerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold shadow-md transition-colors ${
+              isCancelled || isFull
+                ? "pointer-events-none bg-gray-200 text-gray-500"
+                : "bg-orange-500 text-white hover:bg-orange-600"
+            }`}
+            aria-disabled={isCancelled || isFull}
+          >
+            {isCancelled
+              ? "Cancelled"
+              : isFull
+              ? "Full"
+              : "Register on Portal"}
+            {!isCancelled && !isFull && (
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            )}
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function SchedulePage() {
   const [feed, setFeed] = useState<SessionsFeed | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [view, setView] = useState<ViewMode>("calendar");
+  const [selectedEvent, setSelectedEvent] = useState<SessionEvent | null>(null);
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("all");
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
@@ -663,13 +909,12 @@ export function SchedulePage() {
                           {dayEvents.slice(0, 3).map((event) => {
                             const s = getStyle(event);
                             return (
-                              <a
+                              <button
                                 key={event.id}
-                                href={event.registerUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                type="button"
+                                onClick={() => setSelectedEvent(event)}
                                 title={`${formatChipTime(event.startTime)} ${event.name}`}
-                                className={`flex items-center gap-1 truncate rounded px-1 py-0.5 text-[10px] font-medium leading-tight ${s.chipBg} ${s.chipText} ${s.chipHover}`}
+                                className={`flex w-full items-center gap-1 truncate rounded px-1 py-0.5 text-left text-[10px] font-medium leading-tight ${s.chipBg} ${s.chipText} ${s.chipHover}`}
                               >
                                 <span
                                   className={`inline-block h-1.5 w-1.5 shrink-0 rounded-full ${s.dot}`}
@@ -677,7 +922,7 @@ export function SchedulePage() {
                                 <span className="truncate">
                                   {formatChipTime(event.startTime)} {event.name}
                                 </span>
-                              </a>
+                              </button>
                             );
                           })}
                           {dayEvents.length > 3 && (
@@ -940,6 +1185,13 @@ export function SchedulePage() {
           )}
         </div>
       </section>
+
+      {selectedEvent && (
+        <EventDetailModal
+          event={selectedEvent}
+          onClose={() => setSelectedEvent(null)}
+        />
+      )}
     </main>
   );
 }
