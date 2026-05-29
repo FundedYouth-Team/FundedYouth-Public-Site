@@ -8,6 +8,7 @@ interface VideoCardProps {
   onPlayClick?: () => void;
   className?: string;
   playButtonColor?: string;
+  title?: string;
 }
 
 export function VideoCard({
@@ -16,6 +17,7 @@ export function VideoCard({
   onPlayClick,
   className = "",
   playButtonColor,
+  title,
 }: VideoCardProps) {
 
   const getYouTubeVideoId = (url: string): string | null => {
@@ -66,16 +68,23 @@ export function VideoCard({
             }
           }}
         />
-        <div className="absolute inset-0 flex items-center justify-center bg-black/10 transition-all hover:bg-black/20">
-          <Button
-            onClick={handlePlayClick}
-            size="lg"
-            className={`gap-2 rounded-full ${playButtonColor ?? "bg-blue-600 hover:bg-blue-700"} px-6 py-6 text-white shadow-lg hover:scale-105 transition-transform`}
-            aria-label="Play video"
-          >
-            <Play className="h-5 w-5 fill-white" />
-            Play video
-          </Button>
+        <div className="absolute inset-0 flex flex-col items-center bg-black/55 p-4 transition-all hover:bg-black/65">
+          {title && (
+            <p className="mt-4 max-w-lg text-center text-lg font-bold text-white [text-shadow:0_2px_2px_rgba(0,0,0,0.9)] sm:text-xl">
+              {title}
+            </p>
+          )}
+          <div className="flex flex-1 items-center">
+            <Button
+              onClick={handlePlayClick}
+              size="lg"
+              className={`gap-2 rounded-full ${playButtonColor ?? "bg-blue-600 hover:bg-blue-700"} px-6 py-6 text-white shadow-lg hover:scale-105 transition-transform`}
+              aria-label={title ? `Play video: ${title}` : "Play video"}
+            >
+              <Play className="h-5 w-5 fill-white" />
+              Play video
+            </Button>
+          </div>
         </div>
       </div>
     </Card>

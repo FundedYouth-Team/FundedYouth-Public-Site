@@ -1,12 +1,77 @@
 import { useState } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { VideoCard } from '../components/VideoCard'
 import { VideoPlayer } from '../components/VideoPlayer'
 import { useSeo } from '../lib/useSeo'
 
-const WALKTHROUGH_VIDEO_URL = 'https://www.youtube.com/watch?v=dn12wiDpEu4'
-const WALKTHROUGH_THUMBNAIL =
-  'https://portal.fundedyouth.org/assets/user-portal-dark.png'
+// Selectable walkthrough videos shown as cards beneath the player. Clicking a
+// card swaps the video above so it can be played in place.
+const WALKTHROUGH_VIDEOS = [
+  {
+    label: 'Class Schedule',
+    title: 'How to Find Upcoming Classes on the FundedYouth User Portal',
+    desc: 'Browse upcoming classes',
+    videoId: 'E8rDILmQb6M',
+    color: 'text-blue-600 bg-blue-50',
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+      />
+    ),
+  },
+  {
+    label: 'FYBIT Credits',
+    title: 'How to Buy Credit Packs on the FundedYouth User Portal',
+    desc: 'Credit system',
+    videoId: 'vX0kfwLYDLs',
+    color: 'text-amber-600 bg-amber-50',
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M9 8h6m-5 0a3 3 0 110 6H7l3 3m1-12a9 9 0 100 18 9 9 0 000-18z"
+      />
+    ),
+  },
+  {
+    label: 'Membership',
+    title: 'How to Become an Active Member on the FundedYouth User Portal',
+    desc: 'Plans & benefits',
+    videoId: '6pSzWO95yYU',
+    color: 'text-purple-600 bg-purple-50',
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-5.13a4 4 0 11-8 0 4 4 0 018 0zm6 3a3 3 0 11-6 0 3 3 0 016 0z"
+      />
+    ),
+  },
+  {
+    label: 'Join a Class',
+    title: 'How to Join and Register for a Class on the FundedYouth User Portal',
+    desc: 'Sign up in minutes',
+    videoId: 'Zl0fIGgANlI',
+    color: 'text-green-600 bg-green-50',
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+      />
+    ),
+  },
+] as const
+
+const walkthroughVideoUrl = (videoId: string) =>
+  `https://www.youtube.com/watch?v=${videoId}`
 
 const HOME_SCHEMA = {
   '@context': 'https://schema.org',
@@ -76,6 +141,32 @@ export function HomePage() {
     schema: HOME_SCHEMA,
   })
   const [walkthroughOpen, setWalkthroughOpen] = useState(false)
+  const [activeVideo, setActiveVideo] = useState<{
+    videoUrl: string
+    thumbnailUrl?: string
+    title: string
+  }>({
+    videoUrl: walkthroughVideoUrl(WALKTHROUGH_VIDEOS[0].videoId),
+    thumbnailUrl: undefined,
+    title: WALKTHROUGH_VIDEOS[0].title,
+  })
+
+  const activeVideoIndex = Math.max(
+    0,
+    WALKTHROUGH_VIDEOS.findIndex(
+      (v) => walkthroughVideoUrl(v.videoId) === activeVideo.videoUrl,
+    ),
+  )
+
+  const selectWalkthroughVideo = (index: number) => {
+    const total = WALKTHROUGH_VIDEOS.length
+    const item = WALKTHROUGH_VIDEOS[((index % total) + total) % total]
+    setActiveVideo({
+      videoUrl: walkthroughVideoUrl(item.videoId),
+      thumbnailUrl: undefined,
+      title: item.title,
+    })
+  }
 
   return (
     <>
@@ -259,7 +350,7 @@ export function HomePage() {
             </p>
           </div>
 
-          {/* Video card with subtle frame */}
+          {/* Video card with subtle frame + prev/next arrows */}
           <div className="relative">
             <div
               aria-hidden="true"
@@ -267,94 +358,74 @@ export function HomePage() {
             />
             <div className="relative">
               <VideoCard
-                videoUrl={WALKTHROUGH_VIDEO_URL}
-                thumbnailUrl={WALKTHROUGH_THUMBNAIL}
+                key={activeVideo.videoUrl}
+                videoUrl={activeVideo.videoUrl}
+                thumbnailUrl={activeVideo.thumbnailUrl}
+                title={activeVideo.title}
+                playButtonColor="bg-[rgb(33,150,243)] hover:bg-[rgb(30,136,229)]"
                 onPlayClick={() => setWalkthroughOpen(true)}
                 className="border border-gray-200"
               />
+
+              <button
+                type="button"
+                onClick={() => selectWalkthroughVideo(activeVideoIndex - 1)}
+                aria-label="Previous video"
+                className="absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gray-800 shadow-lg backdrop-blur transition-all hover:bg-white hover:scale-105 sm:left-3 sm:h-12 sm:w-12"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </button>
+              <button
+                type="button"
+                onClick={() => selectWalkthroughVideo(activeVideoIndex + 1)}
+                aria-label="Next video"
+                className="absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gray-800 shadow-lg backdrop-blur transition-all hover:bg-white hover:scale-105 sm:right-3 sm:h-12 sm:w-12"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
             </div>
           </div>
 
-          {/* What's covered */}
+          {/* Selectable walkthrough videos — clicking swaps the video above */}
           <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
-            {[
-              {
-                label: 'Memberships',
-                desc: 'Plans & benefits',
-                color: 'text-blue-600 bg-blue-50',
-                icon: (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-5.13a4 4 0 11-8 0 4 4 0 018 0zm6 3a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                ),
-              },
-              {
-                label: 'FYBITS',
-                desc: 'Credit system',
-                color: 'text-amber-600 bg-amber-50',
-                icon: (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 8h6m-5 0a3 3 0 110 6H7l3 3m1-12a9 9 0 100 18 9 9 0 000-18z"
-                  />
-                ),
-              },
-              {
-                label: 'Courses',
-                desc: 'Hands-on lessons',
-                color: 'text-purple-600 bg-purple-50',
-                icon: (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                  />
-                ),
-              },
-              {
-                label: 'Pathways',
-                desc: 'Skill progression',
-                color: 'text-green-600 bg-green-50',
-                icon: (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                  />
-                ),
-              },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition-shadow hover:shadow-md sm:p-4"
-              >
-                <div
-                  className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${item.color}`}
+            {WALKTHROUGH_VIDEOS.map((item, index) => {
+              const videoUrl = walkthroughVideoUrl(item.videoId)
+              const isActive = activeVideo.videoUrl === videoUrl
+              return (
+                <button
+                  key={item.label}
+                  type="button"
+                  aria-pressed={isActive}
+                  onClick={() => selectWalkthroughVideo(index)}
+                  className={`flex items-center gap-3 rounded-xl border bg-white p-3 text-left shadow-sm transition-all hover:shadow-md sm:p-4 ${
+                    isActive
+                      ? 'border-blue-500 ring-2 ring-blue-200'
+                      : 'border-gray-200'
+                  }`}
                 >
-                  <svg
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                  <div
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${item.color}`}
                   >
-                    {item.icon}
-                  </svg>
-                </div>
-                <div className="min-w-0">
-                  <p className="text-sm font-semibold text-gray-900">
-                    {item.label}
-                  </p>
-                  <p className="truncate text-xs text-gray-500">{item.desc}</p>
-                </div>
-              </div>
-            ))}
+                    <svg
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      {item.icon}
+                    </svg>
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-gray-900">
+                      {item.label}
+                    </p>
+                    <p className="truncate text-xs text-gray-500">
+                      {item.desc}
+                    </p>
+                  </div>
+                </button>
+              )
+            })}
           </div>
         </div>
       </section>
@@ -1561,7 +1632,7 @@ export function HomePage() {
       </section>
 
       <VideoPlayer
-        videoUrl={WALKTHROUGH_VIDEO_URL}
+        videoUrl={activeVideo.videoUrl}
         isOpen={walkthroughOpen}
         onClose={() => setWalkthroughOpen(false)}
       />
