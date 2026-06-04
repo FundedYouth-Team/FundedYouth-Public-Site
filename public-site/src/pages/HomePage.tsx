@@ -40,7 +40,7 @@ const WALKTHROUGH_VIDEOS = [
   },
   {
     label: 'Membership',
-    title: 'Active Membership Required to Register for Classes',
+    title: 'Active Membership (required) to Register for Classes',
     desc: 'Plans & benefits',
     videoId: '6pSzWO95yYU',
     color: 'text-purple-600 bg-purple-50',
@@ -55,7 +55,7 @@ const WALKTHROUGH_VIDEOS = [
   },
   {
     label: 'Join a Class',
-    title: 'Register for Class on the FundedYouth Portal',
+    title: 'Register for a Class on the FundedYouth Portal',
     desc: 'Sign up in minutes',
     videoId: '7AnXTBO4Iv4',
     color: 'text-green-600 bg-green-50',
