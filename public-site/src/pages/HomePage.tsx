@@ -10,7 +10,7 @@ import { useSeo } from '../lib/useSeo'
 const WALKTHROUGH_VIDEOS = [
   {
     label: 'Class Schedule',
-    title: 'How to Find Upcoming Classes on the FundedYouth User Portal',
+    title: 'View Upcoming Classes while Logged Out',
     desc: 'Browse upcoming classes',
     videoId: 'E8rDILmQb6M',
     color: 'text-blue-600 bg-blue-50',
@@ -25,7 +25,7 @@ const WALKTHROUGH_VIDEOS = [
   },
   {
     label: 'FYBIT Credits',
-    title: 'How to Buy Credit Packs on the FundedYouth User Portal',
+    title: 'FundedYouth uses FYBIT Credits. What are they?',
     desc: 'Credit system',
     videoId: 'vX0kfwLYDLs',
     color: 'text-amber-600 bg-amber-50',
@@ -40,7 +40,7 @@ const WALKTHROUGH_VIDEOS = [
   },
   {
     label: 'Membership',
-    title: 'How to Become an Active Member on the FundedYouth User Portal',
+    title: 'Active Membership Required to Register for Classes',
     desc: 'Plans & benefits',
     videoId: '6pSzWO95yYU',
     color: 'text-purple-600 bg-purple-50',
@@ -55,7 +55,7 @@ const WALKTHROUGH_VIDEOS = [
   },
   {
     label: 'Join a Class',
-    title: 'How to Join and Register for a Class on the FundedYouth User Portal',
+    title: 'Register for Class on the FundedYouth Portal',
     desc: 'Sign up in minutes',
     videoId: '7AnXTBO4Iv4',
     color: 'text-green-600 bg-green-50',
@@ -68,7 +68,7 @@ const WALKTHROUGH_VIDEOS = [
       />
     ),
   },
-] as const
+] as const;
 
 const walkthroughVideoUrl = (videoId: string) =>
   `https://www.youtube.com/watch?v=${videoId}`
