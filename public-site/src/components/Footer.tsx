@@ -267,6 +267,14 @@ export function Footer() {
             >
               Legal
             </Link>
+            <a
+              href="https://changelog.fundedyouth.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm hover:text-blue-400 transition-colors"
+            >
+              Fun Labs
+            </a>
           </div>
         </div>
       </div>
