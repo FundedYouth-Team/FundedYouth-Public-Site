@@ -57,7 +57,7 @@ const WALKTHROUGH_VIDEOS = [
     label: 'Join a Class',
     title: 'How to Join and Register for a Class on the FundedYouth User Portal',
     desc: 'Sign up in minutes',
-    videoId: 'Zl0fIGgANlI',
+    videoId: '7AnXTBO4Iv4',
     color: 'text-green-600 bg-green-50',
     icon: (
       <path
