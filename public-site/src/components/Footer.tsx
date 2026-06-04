@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FlaskConical } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -271,8 +272,9 @@ export function Footer() {
               href="https://changelog.fundedyouth.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm hover:text-blue-400 transition-colors"
+              className="text-sm hover:text-blue-400 transition-colors inline-flex items-center gap-1.5"
             >
+              <FlaskConical className="h-4 w-4" aria-hidden="true" />
               Fun Labs
             </a>
           </div>
