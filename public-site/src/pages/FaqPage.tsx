@@ -91,12 +91,14 @@ const FAQ_GROUPS: FaqGroup[] = [
             compliant, and the parent or guardian receives a separate email to
             approve the account. Parents signing up more than one child can use
             the{" "}
-            <Link
-              to="/get-started#parent-guide"
+            <a
+              href="https://portal.fundedyouth.org/#watch-and-learn"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-semibold text-blue-600 hover:text-blue-700"
             >
               +trick
-            </Link>{" "}
+            </a>{" "}
             to register multiple kids under a single inbox.
           </>
         ),
@@ -380,12 +382,14 @@ export function FaqPage() {
                   />
                 </svg>
               </Link>
-              <Link
-                to="/get-started"
+              <a
+                href="https://portal.fundedyouth.org/#watch-and-learn"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm transition-colors hover:border-blue-600 hover:text-blue-600"
               >
                 Setup guide
-              </Link>
+              </a>
               <a
                 href="https://portal.fundedyouth.org/"
                 target="_blank"

@@ -599,15 +599,17 @@ export function LearnPage() {
                   parents signing up multiple kids.
                 </p>
               </div>
-              <Link
-                to="/get-started"
+              <a
+                href="https://portal.fundedyouth.org/#watch-and-learn"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex-shrink-0 inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 whitespace-nowrap"
               >
                 See setup guide
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

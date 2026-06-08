@@ -14,7 +14,6 @@ import { ImpactPage } from "./pages/ImpactPage";
 import { LegalIndexPage } from "./pages/legal/LegalIndexPage";
 import { WaiverPage } from "./pages/legal/WaiverPage";
 import { TeachersPage } from "./pages/TeachersPage";
-import { GetStartedPage } from "./pages/GetStartedPage";
 import { SchedulePage } from "./pages/SchedulePage";
 import { FaqPage } from "./pages/FaqPage";
 import { AppsPage } from "./pages/AppsPage";
@@ -22,6 +21,13 @@ import { PrintEstimatePage } from "./pages/apps/PrintEstimatePage";
 import { ModelingEstimatePage } from "./pages/apps/ModelingEstimatePage";
 
 import "./styles/globals.css";
+
+/** Redirects to an external (off-site) URL. react-router's <Navigate> only
+ *  handles in-app paths, so use a full-page redirect for absolute URLs. */
+function ExternalRedirect({ to }: { to: string }) {
+  window.location.replace(to);
+  return null;
+}
 
 function AppLayout() {
   return (
@@ -43,7 +49,13 @@ function AppLayout() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/impact" element={<ImpactPage />} />
           <Route path="/teachers" element={<TeachersPage />} />
-          <Route path="/get-started" element={<GetStartedPage />} />
+          {/* Legacy setup-guide page removed — redirect to the portal walkthrough */}
+          <Route
+            path="/get-started"
+            element={
+              <ExternalRedirect to="https://portal.fundedyouth.org/#watch-and-learn" />
+            }
+          />
           <Route path="/schedule" element={<SchedulePage />} />
           <Route path="/sessions" element={<Navigate to="/schedule" replace />} />
           <Route path="/faq" element={<FaqPage />} />

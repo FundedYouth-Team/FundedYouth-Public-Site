@@ -304,15 +304,17 @@ export function ContactPage() {
               Common questions are usually answered here
             </h2>
             <div className="mt-4 flex flex-wrap gap-3">
-              <Link
-                to="/get-started"
+              <a
+                href="https://portal.fundedyouth.org/#watch-and-learn"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-blue-700"
               >
                 Setup guide
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </Link>
+              </a>
               <Link
                 to="/faq"
                 className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-900 transition-colors hover:border-blue-600 hover:text-blue-600"

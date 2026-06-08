@@ -469,10 +469,12 @@ export function HomePage() {
             })}
           </div>
 
-          {/* Create a new account — links to the 9-step setup guide */}
+          {/* Create a new account — links to the portal walkthrough */}
           <div className="mt-8 text-center">
-            <Link
-              to="/get-started"
+            <a
+              href="https://portal.fundedyouth.org/#watch-and-learn"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-base font-semibold text-blue-600 transition-colors hover:text-blue-700"
             >
               Create a New Account
@@ -489,7 +491,7 @@ export function HomePage() {
                   d="M13 7l5 5m0 0l-5 5m5-5H6"
                 />
               </svg>
-            </Link>
+            </a>
           </div>
         </div>
       </section>

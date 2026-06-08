@@ -184,12 +184,14 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/get-started"
+                <a
+                  href="https://portal.fundedyouth.org/#watch-and-learn"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-blue-400 transition-colors"
                 >
                   Setup Guide
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
