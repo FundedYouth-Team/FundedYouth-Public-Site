@@ -353,18 +353,28 @@ export function HomePage() {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
                   </span>
-                  Live makerspace
+                  Public makerspace
                 </div>
-                {/* FYBITS chip */}
-                <div className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 px-3 py-1.5 text-xs font-bold text-white shadow-lg">
-                  <svg
-                    className="h-3.5 w-3.5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  Earn FYBITS
+                {/* FYBIT logo with glow + label */}
+                <div className="absolute right-4 top-4 flex flex-col items-center gap-2">
+                  <span className="inline-flex items-center gap-2 rounded-full border-2 border-transparent [background:linear-gradient(#383838,#383838)_padding-box,linear-gradient(180deg,#fff7d6_0%,#f3d678_22%,#e0a92e_48%,#c8861a_52%,#eac362_74%,#fff1bf_100%)_border-box] px-3 py-1 text-xs font-semibold text-white shadow-lg">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#e0a92e] opacity-75" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-[radial-gradient(circle_at_30%_30%,#fff7d6_0%,#e0a92e_55%,#c8861a_100%)]" />
+                    </span>
+                    Get FYBITS
+                  </span>
+                  <div className="relative">
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-0 rounded-full bg-amber-300/60 blur-xl"
+                    />
+                    <img
+                      src="https://ps-cdn.fundedyouth.org/fybit-credit-logo.png"
+                      alt="FYBIT Credit"
+                      className="relative h-[7.5rem] w-auto drop-shadow-lg"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
