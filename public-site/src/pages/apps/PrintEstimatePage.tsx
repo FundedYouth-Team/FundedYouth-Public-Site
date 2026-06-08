@@ -1,5 +1,3 @@
-/* eslint-disable tailwindcss/no-custom-classname -- this ported tool uses its own
-   scoped CSS (see ESTIMATE_CSS) rather than Tailwind utilities. */
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSeo } from "../../lib/useSeo";

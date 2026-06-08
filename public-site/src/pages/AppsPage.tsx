@@ -58,6 +58,12 @@ function CategoryIcon({
           <path d="M14.7 6.3a4 4 0 00-5.66 5.66l-5.3 5.3a1.5 1.5 0 002.12 2.12l5.3-5.3a4 4 0 005.66-5.66l-2.47 2.47-2.12-2.12 2.47-2.47z" />
         </svg>
       );
+    case "printer":
+      return (
+        <svg {...common}>
+          <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6z" />
+        </svg>
+      );
     case "code":
       return (
         <svg {...common}>
@@ -265,7 +271,7 @@ export function AppsPage() {
               type="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search web portals..."
+              placeholder="Search apps..."
               className="w-full rounded-xl border border-border bg-card py-2.5 pl-9 pr-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-foreground/30 focus:outline-none focus:ring-2 focus:ring-foreground/10"
             />
           </div>

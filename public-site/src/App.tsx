@@ -19,6 +19,7 @@ import { SchedulePage } from "./pages/SchedulePage";
 import { FaqPage } from "./pages/FaqPage";
 import { AppsPage } from "./pages/AppsPage";
 import { PrintEstimatePage } from "./pages/apps/PrintEstimatePage";
+import { ModelingEstimatePage } from "./pages/apps/ModelingEstimatePage";
 
 import "./styles/globals.css";
 
@@ -50,6 +51,10 @@ function AppLayout() {
           <Route
             path="/apps/3d-print-estimate"
             element={<PrintEstimatePage />}
+          />
+          <Route
+            path="/apps/3d-modeling-estimate"
+            element={<ModelingEstimatePage />}
           />
           <Route path="/legal" element={<LegalIndexPage />} />
           <Route path="/legal/waiver" element={<WaiverPage />} />

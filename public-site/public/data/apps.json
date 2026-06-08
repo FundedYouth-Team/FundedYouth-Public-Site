@@ -1,29 +1,40 @@
 {
   "categories": [
-    { "id": "all", "label": "All Apps", "icon": "sparkles" },
-    { "id": "fy-tools", "label": "FY Tools", "icon": "tools" },
-    { "id": "coding", "label": "Coding", "icon": "code" },
-    { "id": "3d-maker", "label": "3D & Maker", "icon": "cube" },
-    { "id": "automation", "label": "Automation", "icon": "bolt" }
+    {
+      "id": "all",
+      "label": "All Apps",
+      "icon": "sparkles"
+    },
+    {
+      "id": "3d-printing",
+      "label": "3D Printing",
+      "icon": "printer"
+    },
+    {
+      "id": "modeling",
+      "label": "Modeling",
+      "icon": "cube"
+    }
   ],
   "apps": [
-    {
-      "id": "fundedyouth-org",
-      "name": "FundedYouth.org",
-      "label": "Internal",
-      "category": "fy-tools",
-      "description": "Official website of FundedYouth. Learn about classes, workshops, competitions, and how to get involved.",
-      "icon": "https://ps-cdn.fundedyouth.org/logo-color-white-bg.png",
-      "url": "https://fundedyouth.org"
-    },
     {
       "id": "3d-print-estimate",
       "name": "3D Print Estimate",
       "label": "Internal",
-      "category": "fy-tools",
+      "category": "3d-printing",
       "description": "Build a custom 3D print cost estimate and print or save a job receipt for the customer.",
       "icon": "🖨️",
       "url": "/apps/3d-print-estimate",
+      "internal": true
+    },
+    {
+      "id": "3d-modeling-estimate",
+      "name": "3D Modeling Estimate",
+      "label": "Internal",
+      "category": "modeling",
+      "description": "Build a custom 3D modeling work estimate with included services and hourly or set pricing.",
+      "icon": "🎲",
+      "url": "/apps/3d-modeling-estimate",
       "internal": true
     }
   ]
