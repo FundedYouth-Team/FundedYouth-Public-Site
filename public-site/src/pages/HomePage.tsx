@@ -332,6 +332,46 @@ export function HomePage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
+         SUMMER SCHEDULE HIGHLIGHT
+         Announcement bar linking to the Schedule page.
+         ───────────────────────────────────────────────────────────── */}
+      <section className="relative border-y border-amber-200 bg-gradient-to-r from-amber-50 via-orange-50 to-amber-50">
+        <div className="container mx-auto max-w-7xl px-4 py-5 sm:py-6">
+          <Link
+            to="/schedule"
+            className="group flex flex-col items-center justify-center gap-3 text-center lg:flex-row lg:gap-6"
+          >
+            <img
+              src="https://ps-cdn.fundedyouth.org/assets/images/Hello-Summer-Schedule-Calendar-Graphic.png"
+              alt="Hello Summer — Schedule"
+              className="h-12 w-auto transition-transform group-hover:scale-105 sm:h-14"
+            />
+            <p className="text-sm font-semibold text-gray-900 sm:text-base">
+              Our Summer Schedule is here — explore upcoming sessions and reserve
+              your spot.
+            </p>
+            <span className="inline-flex items-center gap-1 text-sm font-bold text-orange-600 transition-colors group-hover:text-orange-700">
+              View Schedule
+              <svg
+                className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
          SECTION 2 — VIDEO WALKTHROUGH
          Embedded portal walkthrough. Intentional, conversion-focused.
          ───────────────────────────────────────────────────────────── */}
