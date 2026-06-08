@@ -17,6 +17,8 @@ import { TeachersPage } from "./pages/TeachersPage";
 import { GetStartedPage } from "./pages/GetStartedPage";
 import { SchedulePage } from "./pages/SchedulePage";
 import { FaqPage } from "./pages/FaqPage";
+import { AppsPage } from "./pages/AppsPage";
+import { PrintEstimatePage } from "./pages/apps/PrintEstimatePage";
 
 import "./styles/globals.css";
 
@@ -44,6 +46,11 @@ function AppLayout() {
           <Route path="/schedule" element={<SchedulePage />} />
           <Route path="/sessions" element={<Navigate to="/schedule" replace />} />
           <Route path="/faq" element={<FaqPage />} />
+          <Route path="/apps" element={<AppsPage />} />
+          <Route
+            path="/apps/3d-print-estimate"
+            element={<PrintEstimatePage />}
+          />
           <Route path="/legal" element={<LegalIndexPage />} />
           <Route path="/legal/waiver" element={<WaiverPage />} />
         </Routes>
