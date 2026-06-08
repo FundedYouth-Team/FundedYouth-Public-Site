@@ -305,7 +305,7 @@ export function ContactPage() {
             </h2>
             <div className="mt-4 flex flex-wrap gap-3">
               <a
-                href="https://portal.fundedyouth.org/#/watch-and-learn"
+                href="https://portal.fundedyouth.org/#watch-and-learn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-blue-700"

@@ -92,7 +92,7 @@ const FAQ_GROUPS: FaqGroup[] = [
             approve the account. Parents signing up more than one child can use
             the{" "}
             <a
-              href="https://portal.fundedyouth.org/#/watch-and-learn"
+              href="https://portal.fundedyouth.org/#watch-and-learn"
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold text-blue-600 hover:text-blue-700"
@@ -383,7 +383,7 @@ export function FaqPage() {
                 </svg>
               </Link>
               <a
-                href="https://portal.fundedyouth.org/#/watch-and-learn"
+                href="https://portal.fundedyouth.org/#watch-and-learn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm transition-colors hover:border-blue-600 hover:text-blue-600"

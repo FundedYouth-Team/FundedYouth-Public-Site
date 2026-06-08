@@ -482,7 +482,7 @@ export function HomePage() {
           {/* Create a new account — links to the portal walkthrough */}
           <div className="mt-8 text-center">
             <a
-              href="https://portal.fundedyouth.org/#/watch-and-learn"
+              href="https://portal.fundedyouth.org/#watch-and-learn"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-base font-semibold text-blue-600 transition-colors hover:text-blue-700"

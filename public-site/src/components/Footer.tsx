@@ -185,7 +185,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://portal.fundedyouth.org/#/watch-and-learn"
+                  href="https://portal.fundedyouth.org/#watch-and-learn"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-blue-400 transition-colors"
