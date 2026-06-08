@@ -600,7 +600,7 @@ export function LearnPage() {
                 </p>
               </div>
               <a
-                href="https://portal.fundedyouth.org/#watch-and-learn"
+                href="https://portal.fundedyouth.org/#/watch-and-learn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-shrink-0 inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700 whitespace-nowrap"

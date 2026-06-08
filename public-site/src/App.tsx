@@ -53,7 +53,7 @@ function AppLayout() {
           <Route
             path="/get-started"
             element={
-              <ExternalRedirect to="https://portal.fundedyouth.org/#watch-and-learn" />
+              <ExternalRedirect to="https://portal.fundedyouth.org/#/watch-and-learn" />
             }
           />
           <Route path="/schedule" element={<SchedulePage />} />
