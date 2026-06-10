@@ -113,12 +113,12 @@ export function TeachersPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
             </a>
-            <a
-              href={PARTNER_MAILTO}
+            <Link
+              to="/contact"
               className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-6 py-3 text-base font-semibold text-gray-900 shadow-sm transition-all hover:border-emerald-600 hover:text-emerald-700"
             >
               Start a conversation
-            </a>
+            </Link>
           </div>
         </div>
       </section>
