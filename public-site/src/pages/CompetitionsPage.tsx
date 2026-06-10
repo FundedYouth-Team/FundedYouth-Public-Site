@@ -102,7 +102,7 @@ export function CompetitionsPage() {
               </span>
               <h1 className="text-4xl font-bold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
                 Where students become{" "}
-                <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-purple-600 to-[#eb25ad] bg-clip-text text-transparent">
                   engineers
                 </span>
               </h1>
@@ -148,7 +148,7 @@ export function CompetitionsPage() {
                   </span>
                   Active competition season
                 </div>
-                <div className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 px-3 py-1.5 text-xs font-bold text-white shadow-lg">
+                <div className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-purple-600 to-[#eb25ad] px-3 py-1.5 text-xs font-bold text-white shadow-lg">
                   Robotics · Rocketry
                 </div>
               </div>

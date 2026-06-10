@@ -103,42 +103,48 @@ export function LearnPage() {
   return (
     <main>
       {/* Hero */}
-      <section className="relative py-20 md:py-28 overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://ps-cdn.fundedyouth.org/assets/images/stem-classroom-v2.png"
-            alt=""
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="absolute inset-0 bg-blue-600/85"></div>
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-blue-50 py-16 md:py-20">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(37,99,235,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(37,99,235,0.06) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
+        <div className="container relative mx-auto max-w-4xl px-4 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-blue-700 shadow-sm backdrop-blur">
+            Classes &amp; Learning
+          </span>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <p className="text-white/90 text-sm font-semibold tracking-wider uppercase mb-4">
-            Classes & Learning
-          </p>
-
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Learn to Create, Build & Innovate
+          <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+            Learn to Create, Build &amp;{" "}
+            <span className="bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
+              Innovate
+            </span>
           </h1>
 
-          <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="mx-auto mt-4 max-w-2xl text-base text-gray-600 sm:text-lg">
             Browse our hands-on STEAM courses, see how they sequence into
             pathways, and create a portal account to enroll.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="#courses"
-              className="inline-block bg-white hover:bg-gray-100 text-blue-600 font-semibold py-3 px-8 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-blue-600/25 transition-all hover:bg-blue-700"
             >
               Browse Courses
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
             </a>
             <a
-              href="#pathways"
-              className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 border-2 border-emerald-600 hover:border-emerald-700"
+              href="#maker-apps"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-6 py-3 text-base font-semibold text-gray-900 shadow-sm transition-all hover:border-blue-600 hover:text-blue-600"
             >
-              See Pathways
+              Maker Apps and Tools
             </a>
           </div>
         </div>
@@ -567,6 +573,42 @@ export function LearnPage() {
                 className="flex-shrink-0 inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-emerald-600/25 transition-all hover:bg-emerald-700 whitespace-nowrap"
               >
                 Open Schedule
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Maker Apps callout */}
+      <section id="maker-apps" className="scroll-mt-24 bg-white pt-12 md:pt-16">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="rounded-2xl border border-purple-200 bg-gradient-to-br from-purple-50 via-white to-fuchsia-50 p-6 md:p-8 shadow-sm">
+            <div className="flex flex-col md:flex-row md:items-center gap-6">
+              <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-purple-600 text-white flex items-center justify-center shadow-lg">
+                <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v2a2 2 0 01-2 2h-1.586a1 1 0 00-.707.293l-1.121 1.121A2 2 0 0114.172 19H9.828a2 2 0 01-1.414-.586l-1.121-1.121A1 1 0 006.586 17H5a2 2 0 01-2-2v-2a2 2 0 012-2m14 0V9a2 2 0 00-2-2H7a2 2 0 00-2 2v2" />
+                </svg>
+              </div>
+              <div className="flex-grow">
+                <p className="text-xs font-bold uppercase tracking-wider text-purple-700">
+                  Tools for makers
+                </p>
+                <h3 className="mt-2 text-2xl md:text-3xl font-bold text-gray-900">
+                  Explore our Maker Apps &amp; Tools
+                </h3>
+                <p className="mt-2 text-gray-600">
+                  Free, browser-based tools to support your projects — 3D print
+                  and modeling cost estimators, and more on the way.
+                </p>
+              </div>
+              <Link
+                to="/apps"
+                className="flex-shrink-0 inline-flex items-center gap-2 rounded-lg bg-purple-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-purple-600/25 transition-all hover:bg-purple-700 whitespace-nowrap"
+              >
+                Browse Apps
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
