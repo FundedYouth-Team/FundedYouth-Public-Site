@@ -41,7 +41,7 @@ const SCHEMA = {
   ],
 };
 
-const APPLY_URL = "https://form.jotform.com/260286782706061";
+const PORTAL_URL = "https://portal.fundedyouth.org/";
 
 interface JourneyStep {
   number: string;
@@ -52,9 +52,9 @@ interface JourneyStep {
 const journeySteps: JourneyStep[] = [
   {
     number: "01",
-    title: "Apply",
+    title: "Sign Up",
     description:
-      "Fill out the volunteer application — tell us your interests, schedule, and what you'd like to teach.",
+      "Create a free account on the FundedYouth portal and sign the Volunteer Agreement. Once you sign, a team member will follow up to schedule an in-person interview.",
   },
   {
     number: "02",
@@ -236,17 +236,18 @@ export function VolunteerPage() {
               <p className="mx-auto max-w-xl text-lg leading-relaxed text-gray-600 sm:text-xl lg:mx-0">
                 Help teach 3D printing, CAD, coding, electronics, and
                 robotics — or support competition teams and the makerspace.
-                We&apos;ll train and certify you so you&apos;re ready to mentor
-                students.
+                Create a free portal account and sign the Volunteer Agreement,
+                then a team member will follow up to schedule an in-person
+                interview.
               </p>
               <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
                 <a
-                  href={APPLY_URL}
+                  href={PORTAL_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-emerald-600/25 transition-all hover:bg-emerald-700"
                 >
-                  Apply to Volunteer
+                  Create a Free Account
                   <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
@@ -289,7 +290,7 @@ export function VolunteerPage() {
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-lg text-gray-600">
               Most volunteers fall into one of three buckets. Pick the one that
-              sounds like you — application is the same for all.
+              sounds like you — the sign-up process is the same for all.
             </p>
           </div>
 
@@ -323,11 +324,11 @@ export function VolunteerPage() {
               Your Journey
             </span>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Apply → Train → Volunteer → Lead
+              Sign Up → Train → Volunteer → Lead
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-lg text-gray-600">
-              From application to leading your own classes — here&apos;s the
-              path.
+              From your first account to leading your own classes — here&apos;s
+              the path.
             </p>
           </div>
 
@@ -491,17 +492,17 @@ export function VolunteerPage() {
             Ready to make a difference?
           </h2>
           <p className="mt-3 text-lg text-emerald-100">
-            Join our team of dedicated volunteers and help inspire the next
-            generation of makers, creators, and engineers.
+            Create a free portal account and sign the Volunteer Agreement —
+            a team member will follow up to schedule your in-person interview.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href={APPLY_URL}
+              href={PORTAL_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-7 py-3.5 text-base font-bold text-emerald-700 shadow-xl shadow-black/20 transition-all hover:bg-emerald-50"
             >
-              Apply Now
+              Create a Free Account
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
