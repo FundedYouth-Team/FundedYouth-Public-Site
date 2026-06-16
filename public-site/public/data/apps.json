@@ -14,6 +14,11 @@
       "id": "modeling",
       "label": "Modeling",
       "icon": "cube"
+    },
+    {
+      "id": "onboarding",
+      "label": "Onboarding",
+      "icon": "tools"
     }
   ],
   "apps": [
@@ -35,6 +40,16 @@
       "description": "Build a custom 3D modeling work estimate with included services and hourly or set pricing.",
       "icon": "🎲",
       "url": "/apps/3d-modeling-estimate",
+      "internal": true
+    },
+    {
+      "id": "print-cards",
+      "name": "Print Cards",
+      "label": "Internal",
+      "category": "onboarding",
+      "description": "Turn account .txt files into printable login cards when creating a new user onsite in person.",
+      "icon": "🪪",
+      "url": "/apps/print-cards",
       "internal": true
     }
   ]
