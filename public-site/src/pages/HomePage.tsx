@@ -1,77 +1,5 @@
-import { useState } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { VideoCard } from '../components/VideoCard'
-import { VideoPlayer } from '../components/VideoPlayer'
 import { useSeo } from '../lib/useSeo'
-
-// Selectable walkthrough videos shown as cards beneath the player. Clicking a
-// card swaps the video above so it can be played in place.
-const WALKTHROUGH_VIDEOS = [
-  {
-    label: 'Class Schedule',
-    title: 'View Upcoming Classes while Logged Out',
-    desc: 'Browse upcoming classes',
-    videoId: 'E8rDILmQb6M',
-    color: 'text-blue-600 bg-blue-50',
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-      />
-    ),
-  },
-  {
-    label: 'FYBIT Credits',
-    title: 'FundedYouth uses FYBIT Credits. What are they?',
-    desc: 'Credit system',
-    videoId: 'vX0kfwLYDLs',
-    color: 'text-amber-600 bg-amber-50',
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M9 8h6m-5 0a3 3 0 110 6H7l3 3m1-12a9 9 0 100 18 9 9 0 000-18z"
-      />
-    ),
-  },
-  {
-    label: 'Membership',
-    title: 'Active Membership (required) to Register for Classes',
-    desc: 'Plans & benefits',
-    videoId: '6pSzWO95yYU',
-    color: 'text-purple-600 bg-purple-50',
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-5.13a4 4 0 11-8 0 4 4 0 018 0zm6 3a3 3 0 11-6 0 3 3 0 016 0z"
-      />
-    ),
-  },
-  {
-    label: 'Join a Class',
-    title: 'Register for a Class on the FundedYouth Portal',
-    desc: 'Sign up in minutes',
-    videoId: '7AnXTBO4Iv4',
-    color: 'text-green-600 bg-green-50',
-    icon: (
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-      />
-    ),
-  },
-] as const;
-
-const walkthroughVideoUrl = (videoId: string) =>
-  `https://www.youtube.com/watch?v=${videoId}`
 
 const HOME_SCHEMA = {
   '@context': 'https://schema.org',
@@ -140,33 +68,6 @@ export function HomePage() {
     url: 'https://fundedyouth.org/',
     schema: HOME_SCHEMA,
   })
-  const [walkthroughOpen, setWalkthroughOpen] = useState(false)
-  const [activeVideo, setActiveVideo] = useState<{
-    videoUrl: string
-    thumbnailUrl?: string
-    title: string
-  }>({
-    videoUrl: walkthroughVideoUrl(WALKTHROUGH_VIDEOS[0].videoId),
-    thumbnailUrl: undefined,
-    title: WALKTHROUGH_VIDEOS[0].title,
-  })
-
-  const activeVideoIndex = Math.max(
-    0,
-    WALKTHROUGH_VIDEOS.findIndex(
-      (v) => walkthroughVideoUrl(v.videoId) === activeVideo.videoUrl,
-    ),
-  )
-
-  const selectWalkthroughVideo = (index: number) => {
-    const total = WALKTHROUGH_VIDEOS.length
-    const item = WALKTHROUGH_VIDEOS[((index % total) + total) % total]
-    setActiveVideo({
-      videoUrl: walkthroughVideoUrl(item.videoId),
-      thumbnailUrl: undefined,
-      title: item.title,
-    })
-  }
 
   return (
     <>
@@ -383,132 +284,100 @@ export function HomePage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-         SECTION 2 — VIDEO WALKTHROUGH
-         Embedded portal walkthrough. Intentional, conversion-focused.
+         SECTION 2 — STUDENT PROJECTS
+         "Students actually build things here." Bento gallery.
          ───────────────────────────────────────────────────────────── */}
       <section className="relative bg-white py-20 sm:py-24">
-        <div className="container mx-auto max-w-5xl px-4">
-          <div className="mb-10 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-blue-700">
-              Product Walkthrough
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="mb-12 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-green-700">
+              Student Projects
             </span>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
-              See How the FundedYouth Portal Works
+              Students actually build things here
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-              Watch a quick walkthrough of memberships, FYBITS, courses, and
-              learning pathways.
+              3D prints, CAD models, working code, robotics rigs — every
+              course ends with a real project.
             </p>
           </div>
 
-          {/* Video card with subtle frame + prev/next arrows */}
-          <div className="relative">
-            <div
-              aria-hidden="true"
-              className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-blue-500/20 via-blue-400/10 to-cyan-400/20 blur-2xl"
-            />
-            <div className="relative">
-              <VideoCard
-                key={activeVideo.videoUrl}
-                videoUrl={activeVideo.videoUrl}
-                thumbnailUrl={activeVideo.thumbnailUrl}
-                title={activeVideo.title}
-                playButtonColor="bg-[rgb(33,150,243)] hover:bg-[rgb(30,136,229)]"
-                onPlayClick={() => setWalkthroughOpen(true)}
-                className="border border-gray-200"
-              />
-
-              <button
-                type="button"
-                onClick={() => selectWalkthroughVideo(activeVideoIndex - 1)}
-                aria-label="Previous video"
-                className="absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gray-800 shadow-lg backdrop-blur transition-all hover:bg-white hover:scale-105 sm:left-3 sm:h-12 sm:w-12"
+          <div className="grid auto-rows-[200px] grid-cols-2 gap-4 sm:auto-rows-[220px] lg:grid-cols-4">
+            {[
+              {
+                src: 'https://ps-cdn.fundedyouth.org/assets/images/3Kids-Looking-at-3D-Pencil-Holding-Monster-1024x683.png',
+                title: 'Pencil-Holding Monster',
+                tag: '3D Printing',
+                tagColor: 'bg-blue-600',
+                span: 'col-span-2 row-span-2',
+              },
+              {
+                src: 'https://ps-cdn.fundedyouth.org/assets/images/making-a-sword-video-cover.png',
+                title: 'Mini-Dummy Sword',
+                tag: 'MVP1-3 Project',
+                tagColor: 'bg-orange-500',
+                span: 'col-span-2 row-span-1 lg:col-span-2',
+              },
+              {
+                src: 'https://ps-cdn.fundedyouth.org/assets/images/countdown-video-cover.png',
+                title: 'Countdown Game',
+                tag: 'Coding',
+                tagColor: 'bg-purple-600',
+                span: 'col-span-1 row-span-1',
+              },
+              {
+                src: 'https://ps-cdn.fundedyouth.org/assets/images/rusteze-robotics-2025-26.png',
+                title: 'Rusteze Robotics',
+                tag: 'FTC Team',
+                tagColor: 'bg-red-600',
+                span: 'col-span-1 row-span-1',
+              },
+              {
+                src: 'https://ps-cdn.fundedyouth.org/assets/images/tagline-bg-3dprinting.png',
+                title: 'Print Farm in Action',
+                tag: 'Makerspace',
+                tagColor: 'bg-cyan-600',
+                span: 'col-span-2 row-span-1 lg:col-span-2',
+              },
+              {
+                src: 'https://ps-cdn.fundedyouth.org/assets/images/stem-classroom-v2.png',
+                title: 'STEAM Lab',
+                tag: 'In Class',
+                tagColor: 'bg-teal-600',
+                span: 'col-span-2 row-span-1 lg:col-span-2',
+              },
+            ].map((p) => (
+              <figure
+                key={p.title}
+                className={`group relative overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm ${p.span}`}
               >
-                <ChevronLeft className="h-6 w-6" />
-              </button>
-              <button
-                type="button"
-                onClick={() => selectWalkthroughVideo(activeVideoIndex + 1)}
-                aria-label="Next video"
-                className="absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-gray-800 shadow-lg backdrop-blur transition-all hover:bg-white hover:scale-105 sm:right-3 sm:h-12 sm:w-12"
-              >
-                <ChevronRight className="h-6 w-6" />
-              </button>
-            </div>
-          </div>
-
-          {/* Selectable walkthrough videos — clicking swaps the video above */}
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4">
-            {WALKTHROUGH_VIDEOS.map((item, index) => {
-              const videoUrl = walkthroughVideoUrl(item.videoId)
-              const isActive = activeVideo.videoUrl === videoUrl
-              return (
-                <button
-                  key={item.label}
-                  type="button"
-                  aria-pressed={isActive}
-                  onClick={() => selectWalkthroughVideo(index)}
-                  className={`flex items-center gap-3 rounded-xl border bg-white p-3 text-left shadow-sm transition-all hover:shadow-md sm:p-4 ${
-                    isActive
-                      ? 'border-blue-500 ring-2 ring-blue-200'
-                      : 'border-gray-200'
-                  }`}
-                >
-                  <div
-                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${item.color}`}
-                  >
-                    <svg
-                      className="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      {item.icon}
-                    </svg>
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-sm font-semibold text-gray-900">
-                      {item.label}
-                    </p>
-                    <p className="truncate text-xs text-gray-500">
-                      {item.desc}
-                    </p>
-                  </div>
-                </button>
-              )
-            })}
-          </div>
-
-          {/* Create a new account — links to the portal walkthrough */}
-          <div className="mt-8 text-center">
-            <a
-              href="https://portal.fundedyouth.org/#watch-and-learn"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-base font-semibold text-blue-600 transition-colors hover:text-blue-700"
-            >
-              Create a New Account
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                <img
+                  src={p.src}
+                  alt={p.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
                 />
-              </svg>
-            </a>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 p-4">
+                  <p className="text-sm font-bold text-white drop-shadow-md sm:text-base">
+                    {p.title}
+                  </p>
+                  <span
+                    className={`inline-flex shrink-0 rounded-full ${p.tagColor} px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-sm`}
+                  >
+                    {p.tag}
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-         SECTION 3 — HOW FYBITS WORK
-         5-step flow + FYBITS unlock benefits panel.
+         SECTION 3 — HOW IT WORKS
+         4-step flow + FYBITS unlock benefits panel, flowing into a CTA
+         that sends visitors to the full walkthrough on the portal.
          ───────────────────────────────────────────────────────────── */}
       <section className="relative bg-gray-50 py-20 sm:py-24">
         <div className="container mx-auto max-w-7xl px-4">
@@ -524,15 +393,15 @@ export function HomePage() {
               How It Works
             </span>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
-              From Sign-Up to Skill-Up in 5 Steps
+              From Sign-Up to Skill-Up in 4 Steps
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-              FYBITS are credits you buy on the portal and spend across the
-              platform — for membership, courses, sessions, and lab time.
+              Create an account, subscribe to a membership, and start
+              learning — no credits to buy just to get started.
             </p>
           </div>
 
-          {/* 5-step process */}
+          {/* 4-step process */}
           <div className="relative">
             {/* Desktop connector line behind the step badges */}
             <div
@@ -540,12 +409,12 @@ export function HomePage() {
               className="pointer-events-none absolute left-0 right-0 top-8 hidden h-0.5 bg-gradient-to-r from-blue-200 via-amber-300 to-blue-200 lg:block"
             />
 
-            <ol className="relative grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
+            <ol className="relative grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
               {[
                 {
                   num: '01',
-                  title: 'Create a Portal Account',
-                  desc: 'Sign up free on portal.fundedyouth.org to get started.',
+                  title: 'Create Account & Verify Email',
+                  desc: 'Sign up free on portal.fundedyouth.org and verify your email to get started.',
                   icon: (
                     <path
                       strokeLinecap="round"
@@ -557,8 +426,8 @@ export function HomePage() {
                 },
                 {
                   num: '02',
-                  title: 'Buy FYBIT Credit Packs',
-                  desc: 'Purchase packs securely on the portal — FYBITS power everything.',
+                  title: 'Subscribe to Membership',
+                  desc: 'Subscribe securely through Stripe to unlock included courses and printer access.',
                   icon: (
                     <path
                       strokeLinecap="round"
@@ -570,21 +439,8 @@ export function HomePage() {
                 },
                 {
                   num: '03',
-                  title: 'Activate Membership',
-                  desc: '10 FYBITS/month unlocks 4 free courses and included printer access.',
-                  icon: (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                    />
-                  ),
-                },
-                {
-                  num: '04',
-                  title: 'Join Your First Course',
-                  desc: 'Start with the 4 free courses or spend FYBITS on any class.',
+                  title: 'Join a Course',
+                  desc: 'Start with your included courses or add a paid course with FYBITS.',
                   icon: (
                     <path
                       strokeLinecap="round"
@@ -595,9 +451,9 @@ export function HomePage() {
                   ),
                 },
                 {
-                  num: '05',
-                  title: 'Register for Sessions & Lab Time',
-                  desc: 'Use FYBITS for workshops, lab access, and printer time.',
+                  num: '04',
+                  title: 'Register for Class Times',
+                  desc: 'Pick session times that fit your schedule and start building.',
                   icon: (
                     <path
                       strokeLinecap="round"
@@ -632,7 +488,7 @@ export function HomePage() {
                     {step.desc}
                   </p>
                   {/* Mobile connector chevron */}
-                  {i < 4 && (
+                  {i < 3 && (
                     <svg
                       aria-hidden="true"
                       className="my-2 h-5 w-5 text-gray-300 lg:hidden"
@@ -723,15 +579,15 @@ export function HomePage() {
                   What FYBITS pay for
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-gray-600">
-                  Buy credits in packs, then spend them where you need them
-                  most across the FundedYouth platform.
+                  Your membership is a simple monthly subscription. Buy
+                  FYBITS credits whenever you want more — for extras beyond
+                  what&apos;s included.
                 </p>
               </div>
 
               <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:col-span-2">
                 {[
-                  'Monthly membership (10 FYBITS)',
-                  'Additional courses & workshops',
+                  'Additional paid courses & workshops',
                   'Sovol & Bambu printer time',
                   'Optional add-ons (filament, perks)',
                   'Sessions and 1-on-1 mentoring',
@@ -767,7 +623,287 @@ export function HomePage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-         SECTION 4 — MEMBERSHIP
+         SECTION 4 — FEATURED COURSES
+         Course cards: code, title, pathway, duration, difficulty, topics.
+         ───────────────────────────────────────────────────────────── */}
+      <section className="relative bg-white py-20 sm:py-24">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-blue-700">
+                Featured Courses
+              </span>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
+                Hands-on, project-driven classes
+              </h2>
+              <p className="mt-3 max-w-2xl text-lg text-gray-600">
+                Each course teaches a real tool used by makers and engineers.
+                Spend FYBITS to enroll.
+              </p>
+            </div>
+            <Link
+              to="/learn#courses"
+              className="hidden shrink-0 items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 transition-colors hover:border-blue-600 hover:text-blue-600 sm:inline-flex"
+            >
+              Browse all
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                code: '3DP1',
+                title: 'Cura Slicer Basics',
+                pathway: '3D Printing',
+                pathwayColor:
+                  'bg-blue-50 text-blue-700 border-blue-100',
+                accent: 'from-blue-500 to-cyan-500',
+                sessions: '2 sessions · 1 hr each',
+                difficulty: 'Beginner',
+                summary:
+                  'Slice STL models with Cura and run your first FDM prints from start to finish.',
+                topics: ['Cura', 'Supports', 'Adhesion', 'G-Code'],
+                detailsUrl:
+                  'https://docs.fundedyouth.org/courses/3dp1-cura-slicer-basics/',
+              },
+              {
+                code: '3DP2',
+                title: 'Bambu Studio Basics',
+                pathway: '3D Printing',
+                pathwayColor:
+                  'bg-blue-50 text-blue-700 border-blue-100',
+                accent: 'from-blue-500 to-cyan-500',
+                sessions: '2 sessions · 1 hr each',
+                difficulty: 'Beginner',
+                summary:
+                  'Master MakerWorld, printer setup, and multi-plate slicing in Bambu Studio.',
+                topics: [
+                  'MakerWorld',
+                  'Printer setup',
+                  'Filament',
+                  'Multi-plate',
+                ],
+                detailsUrl:
+                  'https://docs.fundedyouth.org/courses/3dp2-bambu-studio/',
+              },
+              {
+                code: '3DM1',
+                title: 'TinkerCAD Basics',
+                pathway: 'CAD & Product Design',
+                pathwayColor:
+                  'bg-orange-50 text-orange-700 border-orange-100',
+                accent: 'from-orange-400 to-amber-500',
+                sessions: '2 sessions · 1 hr each',
+                difficulty: 'Beginner',
+                summary:
+                  'Design your first 3D models, align parts, and export print-ready STL files.',
+                topics: [
+                  'CAD basics',
+                  'Shapes',
+                  'Alignment',
+                  'STL export',
+                ],
+                detailsUrl:
+                  'https://docs.fundedyouth.org/courses/3dm1-tinkercad-modeling/',
+              },
+              {
+                code: 'CDE1',
+                title: 'Sprite Lab Coding',
+                pathway: 'Coding & Logic',
+                pathwayColor:
+                  'bg-purple-50 text-purple-700 border-purple-100',
+                accent: 'from-purple-500 to-fuchsia-500',
+                sessions: '3 sessions · 1 hr each',
+                difficulty: 'Beginner',
+                summary:
+                  'Build playable mini-games while learning variables, events, and game logic.',
+                topics: [
+                  'Variables',
+                  'Events',
+                  'IF statements',
+                  'Functions',
+                ],
+                detailsUrl:
+                  'https://docs.fundedyouth.org/courses/cde1-sprite-lab-coding/',
+              },
+            ].map((c) => (
+              <article
+                key={c.code}
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"
+              >
+                {/* Accent bar */}
+                <div
+                  className={`h-1.5 bg-gradient-to-r ${c.accent}`}
+                />
+                <div className="flex flex-1 flex-col p-5">
+                  {/* Header row */}
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-mono text-xs font-bold tracking-wider text-gray-900">
+                      {c.code}
+                    </span>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-0.5 text-[10px] font-semibold text-green-700">
+                      {c.difficulty}
+                    </span>
+                  </div>
+                  <span
+                    className={`mt-3 inline-flex w-fit items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${c.pathwayColor}`}
+                  >
+                    {c.pathway}
+                  </span>
+                  <h3 className="mt-3 text-lg font-bold leading-tight text-gray-900">
+                    {c.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                    {c.summary}
+                  </p>
+
+                  {/* Topics */}
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {c.topics.map((t) => (
+                      <span
+                        key={t}
+                        className="inline-flex rounded bg-gray-100 px-2 py-0.5 text-[11px] font-medium text-gray-700"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Footer */}
+                  <div className="mt-auto flex items-center justify-between gap-2 border-t border-gray-100 pt-4">
+                    <span className="inline-flex items-center gap-1.5 text-xs text-gray-500">
+                      <svg
+                        className="h-3.5 w-3.5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      {c.sessions}
+                    </span>
+                    <div className="flex shrink-0 items-center gap-3">
+                      <a
+                        href={c.detailsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium text-gray-500 transition-colors hover:text-gray-900"
+                      >
+                        Details
+                      </a>
+                      <a
+                        href="https://portal.fundedyouth.org"
+                        className="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 transition-colors hover:text-blue-700"
+                      >
+                        Enroll
+                        <svg
+                          className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M13 7l5 5m0 0l-5 5m5-5H6"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {/* Mobile browse all */}
+          <div className="mt-8 text-center sm:hidden">
+            <Link
+              to="/learn#courses"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-900"
+            >
+              Browse all courses
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+         SECTION 5 — PRODUCT WALKTHROUGH CTA
+         The natural next step after the steps, FYBITS breakdown, and
+         featured courses above — sends visitors to the full walkthrough
+         on the portal.
+         ───────────────────────────────────────────────────────────── */}
+      <section className="relative bg-gray-50 py-20 sm:py-24">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="flex flex-col items-center gap-4 rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 via-white to-cyan-50 px-6 py-10 text-center sm:px-10">
+            <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-blue-700">
+              Product Walkthrough
+            </span>
+            <h3 className="text-2xl font-bold text-gray-900 sm:text-3xl">
+              See It All in Action on the Portal
+            </h3>
+            <p className="max-w-xl text-base text-gray-600">
+              Watch a full walkthrough of memberships, FYBITS, courses, and
+              learning pathways directly on the FundedYouth Portal.
+            </p>
+            <a
+              href="https://portal.fundedyouth.org/#watch-and-learn"
+              className="mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-blue-600/20 transition-all hover:bg-blue-700"
+            >
+              See How It Works
+              <svg
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+         SECTION 6 — MEMBERSHIP
          ───────────────────────────────────────────────────────────── */}
       <section
         id="memberships"
@@ -782,8 +918,9 @@ export function HomePage() {
               One simple subscription
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-              Get 10 FYBIT credits delivered every month — spend them across the
-              platform on courses, sessions, and printer time.
+              Billed monthly through Stripe — cancel anytime. If a card
+              payment ever fails, your membership falls back to FYBIT
+              credits so you stay covered.
             </p>
           </div>
 
@@ -801,11 +938,12 @@ export function HomePage() {
                 </div>
                 <div className="min-w-0 flex-1">
                   <h3 className="text-base font-bold text-gray-900">
-                    10 FYBIT Credits | Monthly
+                    Basic Membership
                   </h3>
                   <p className="mt-1 text-sm leading-relaxed text-gray-600">
-                    (No bonus credits) This is a non-refundable purchase.
-                    Credits cannot be exchanged for cash or real currency.
+                    Includes 3D Print 1, 3D Print 2, 3D Modeling 1, and
+                    Coding 1 courses. Members also get reduced 3D printing
+                    costs and savings on filament purchases.
                   </p>
                 </div>
               </div>
@@ -817,7 +955,7 @@ export function HomePage() {
                   <span className="text-sm font-medium text-gray-500">/mo</span>
                 </div>
                 <p className="text-base font-bold text-amber-600">
-                  10 credits/mo
+                  Cancel anytime
                 </p>
               </div>
               <a
@@ -848,7 +986,7 @@ export function HomePage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-         SECTION 5 — LEARNING PATHWAYS
+         SECTION 7 — LEARNING PATHWAYS
          Skill-tree style: linear progression with locked advanced nodes.
          ───────────────────────────────────────────────────────────── */}
       <section className="relative bg-gradient-to-b from-gray-50 to-white py-20 sm:py-24">
@@ -1090,338 +1228,9 @@ export function HomePage() {
       </section>
 
       {/* ─────────────────────────────────────────────────────────────
-         SECTION 6 — FEATURED COURSES
-         Course cards: code, title, pathway, duration, difficulty, topics.
-         ───────────────────────────────────────────────────────────── */}
-      <section className="relative bg-white py-20 sm:py-24">
-        <div className="container mx-auto max-w-7xl px-4">
-          <div className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-blue-700">
-                Featured Courses
-              </span>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
-                Hands-on, project-driven classes
-              </h2>
-              <p className="mt-3 max-w-2xl text-lg text-gray-600">
-                Each course teaches a real tool used by makers and engineers.
-                Spend FYBITS to enroll.
-              </p>
-            </div>
-            <Link
-              to="/learn#courses"
-              className="hidden shrink-0 items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 transition-colors hover:border-blue-600 hover:text-blue-600 sm:inline-flex"
-            >
-              Browse all
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                code: '3DP1',
-                title: 'Cura Slicer Basics',
-                pathway: '3D Printing',
-                pathwayColor:
-                  'bg-blue-50 text-blue-700 border-blue-100',
-                accent: 'from-blue-500 to-cyan-500',
-                sessions: '2 sessions · 1 hr each',
-                difficulty: 'Beginner',
-                summary:
-                  'Slice STL models with Cura and run your first FDM prints from start to finish.',
-                topics: ['Cura', 'Supports', 'Adhesion', 'G-Code'],
-                detailsUrl:
-                  'https://docs.fundedyouth.org/courses/3dp1-cura-slicer-basics/',
-              },
-              {
-                code: '3DP2',
-                title: 'Bambu Studio Basics',
-                pathway: '3D Printing',
-                pathwayColor:
-                  'bg-blue-50 text-blue-700 border-blue-100',
-                accent: 'from-blue-500 to-cyan-500',
-                sessions: '2 sessions · 1 hr each',
-                difficulty: 'Beginner',
-                summary:
-                  'Master MakerWorld, printer setup, and multi-plate slicing in Bambu Studio.',
-                topics: [
-                  'MakerWorld',
-                  'Printer setup',
-                  'Filament',
-                  'Multi-plate',
-                ],
-                detailsUrl:
-                  'https://docs.fundedyouth.org/courses/3dp2-bambu-studio/',
-              },
-              {
-                code: '3DM1',
-                title: 'TinkerCAD Basics',
-                pathway: 'CAD & Product Design',
-                pathwayColor:
-                  'bg-orange-50 text-orange-700 border-orange-100',
-                accent: 'from-orange-400 to-amber-500',
-                sessions: '2 sessions · 1 hr each',
-                difficulty: 'Beginner',
-                summary:
-                  'Design your first 3D models, align parts, and export print-ready STL files.',
-                topics: [
-                  'CAD basics',
-                  'Shapes',
-                  'Alignment',
-                  'STL export',
-                ],
-                detailsUrl:
-                  'https://docs.fundedyouth.org/courses/3dm1-tinkercad-modeling/',
-              },
-              {
-                code: 'CDE1',
-                title: 'Sprite Lab Coding',
-                pathway: 'Coding & Logic',
-                pathwayColor:
-                  'bg-purple-50 text-purple-700 border-purple-100',
-                accent: 'from-purple-500 to-fuchsia-500',
-                sessions: '3 sessions · 1 hr each',
-                difficulty: 'Beginner',
-                summary:
-                  'Build playable mini-games while learning variables, events, and game logic.',
-                topics: [
-                  'Variables',
-                  'Events',
-                  'IF statements',
-                  'Functions',
-                ],
-                detailsUrl:
-                  'https://docs.fundedyouth.org/courses/cde1-sprite-lab-coding/',
-              },
-            ].map((c) => (
-              <article
-                key={c.code}
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"
-              >
-                {/* Accent bar */}
-                <div
-                  className={`h-1.5 bg-gradient-to-r ${c.accent}`}
-                />
-                <div className="flex flex-1 flex-col p-5">
-                  {/* Header row */}
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="font-mono text-xs font-bold tracking-wider text-gray-900">
-                      {c.code}
-                    </span>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2 py-0.5 text-[10px] font-semibold text-green-700">
-                      {c.difficulty}
-                    </span>
-                  </div>
-                  <span
-                    className={`mt-3 inline-flex w-fit items-center gap-1 rounded-md border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${c.pathwayColor}`}
-                  >
-                    {c.pathway}
-                  </span>
-                  <h3 className="mt-3 text-lg font-bold leading-tight text-gray-900">
-                    {c.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                    {c.summary}
-                  </p>
-
-                  {/* Topics */}
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {c.topics.map((t) => (
-                      <span
-                        key={t}
-                        className="inline-flex rounded bg-gray-100 px-2 py-0.5 text-[11px] font-medium text-gray-700"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Footer */}
-                  <div className="mt-auto flex items-center justify-between gap-2 border-t border-gray-100 pt-4">
-                    <span className="inline-flex items-center gap-1.5 text-xs text-gray-500">
-                      <svg
-                        className="h-3.5 w-3.5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                      </svg>
-                      {c.sessions}
-                    </span>
-                    <div className="flex shrink-0 items-center gap-3">
-                      <a
-                        href={c.detailsUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm font-medium text-gray-500 transition-colors hover:text-gray-900"
-                      >
-                        Details
-                      </a>
-                      <a
-                        href="https://portal.fundedyouth.org"
-                        className="inline-flex items-center gap-1 text-sm font-semibold text-blue-600 transition-colors hover:text-blue-700"
-                      >
-                        Enroll
-                        <svg
-                          className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M13 7l5 5m0 0l-5 5m5-5H6"
-                          />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          {/* Mobile browse all */}
-          <div className="mt-8 text-center sm:hidden">
-            <Link
-              to="/learn#courses"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-900"
-            >
-              Browse all courses
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
-         SECTION 7 — STUDENT PROJECTS
-         "Students actually build things here." Bento gallery.
-         ───────────────────────────────────────────────────────────── */}
-      <section className="relative bg-gray-50 py-20 sm:py-24">
-        <div className="container mx-auto max-w-7xl px-4">
-          <div className="mb-12 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-green-700">
-              Student Projects
-            </span>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
-              Students actually build things here
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-              3D prints, CAD models, working code, robotics rigs — every
-              course ends with a real project.
-            </p>
-          </div>
-
-          <div className="grid auto-rows-[200px] grid-cols-2 gap-4 sm:auto-rows-[220px] lg:grid-cols-4">
-            {[
-              {
-                src: 'https://ps-cdn.fundedyouth.org/assets/images/3Kids-Looking-at-3D-Pencil-Holding-Monster-1024x683.png',
-                title: 'Pencil-Holding Monster',
-                tag: '3D Printing',
-                tagColor: 'bg-blue-600',
-                span: 'col-span-2 row-span-2',
-              },
-              {
-                src: 'https://ps-cdn.fundedyouth.org/assets/images/making-a-sword-video-cover.png',
-                title: 'Mini-Dummy Sword',
-                tag: 'MVP1-3 Project',
-                tagColor: 'bg-orange-500',
-                span: 'col-span-2 row-span-1 lg:col-span-2',
-              },
-              {
-                src: 'https://ps-cdn.fundedyouth.org/assets/images/countdown-video-cover.png',
-                title: 'Countdown Game',
-                tag: 'Coding',
-                tagColor: 'bg-purple-600',
-                span: 'col-span-1 row-span-1',
-              },
-              {
-                src: 'https://ps-cdn.fundedyouth.org/assets/images/rusteze-robotics-2025-26.png',
-                title: 'Rusteze Robotics',
-                tag: 'FTC Team',
-                tagColor: 'bg-red-600',
-                span: 'col-span-1 row-span-1',
-              },
-              {
-                src: 'https://ps-cdn.fundedyouth.org/assets/images/tagline-bg-3dprinting.png',
-                title: 'Print Farm in Action',
-                tag: 'Makerspace',
-                tagColor: 'bg-cyan-600',
-                span: 'col-span-2 row-span-1 lg:col-span-2',
-              },
-              {
-                src: 'https://ps-cdn.fundedyouth.org/assets/images/stem-classroom-v2.png',
-                title: 'STEAM Lab',
-                tag: 'In Class',
-                tagColor: 'bg-teal-600',
-                span: 'col-span-2 row-span-1 lg:col-span-2',
-              },
-            ].map((p) => (
-              <figure
-                key={p.title}
-                className={`group relative overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm ${p.span}`}
-              >
-                <img
-                  src={p.src}
-                  alt={p.title}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 p-4">
-                  <p className="text-sm font-bold text-white drop-shadow-md sm:text-base">
-                    {p.title}
-                  </p>
-                  <span
-                    className={`inline-flex shrink-0 rounded-full ${p.tagColor} px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-sm`}
-                  >
-                    {p.tag}
-                  </span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─────────────────────────────────────────────────────────────
          SECTION 8 — FOR SCHOOLS & BOOTCAMPS
          ───────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-white py-20 sm:py-24">
+      <section className="relative overflow-hidden bg-gray-50 py-20 sm:py-24">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -right-32 top-24 h-72 w-72 rounded-full bg-teal-200/30 blur-3xl"
@@ -1661,10 +1470,10 @@ export function HomePage() {
           {/* Steps row */}
           <ol className="mx-auto mt-10 grid max-w-3xl grid-cols-2 gap-3 text-left sm:grid-cols-4">
             {[
-              'Buy FYBITS',
-              'Activate Membership (10 FYBITS/mo)',
+              'Create Account & Verify Email',
+              'Subscribe to Membership',
               'Join a Course',
-              'Register for a Session',
+              'Register for Class Times',
             ].map((label, i) => (
               <li
                 key={label}
@@ -1706,12 +1515,6 @@ export function HomePage() {
           </div>
         </div>
       </section>
-
-      <VideoPlayer
-        videoUrl={activeVideo.videoUrl}
-        isOpen={walkthroughOpen}
-        onClose={() => setWalkthroughOpen(false)}
-      />
     </>
   )
 }

@@ -9,6 +9,12 @@ const menuItems = [
   { label: "For Schools", href: "/teachers", page: "teachers" },
 ];
 
+const mobileOnlyMenuItems = [
+  { label: "Volunteer", href: "/volunteer", page: "volunteer" },
+  { label: "Donate", href: "/donate", page: "donate" },
+  { label: "Contact", href: "/contact", page: "contact" },
+];
+
 const PORTAL_URL = "https://portal.fundedyouth.org/";
 
 export function Header() {
@@ -166,6 +172,23 @@ export function Header() {
             <nav className="flex-1 px-6 py-6 overflow-y-auto">
               <div className="flex flex-col space-y-1">
                 {menuItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={item.href}
+                    className={`px-4 py-3 text-lg rounded-lg transition-colors ${
+                      currentPage === item.page
+                        ? "text-blue-600 bg-blue-50 font-medium"
+                        : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
+                    }`}
+                    onClick={closeMobileMenu}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="flex flex-col space-y-1 mt-4 pt-4 border-t border-gray-200">
+                {mobileOnlyMenuItems.map((item) => (
                   <Link
                     key={item.label}
                     to={item.href}
