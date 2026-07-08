@@ -19,6 +19,11 @@
       "id": "onboarding",
       "label": "Onboarding",
       "icon": "tools"
+    },
+    {
+      "id": "schools",
+      "label": "Schools",
+      "icon": "bolt"
     }
   ],
   "apps": [
@@ -51,6 +56,15 @@
       "icon": "🪪",
       "url": "/apps/print-cards",
       "internal": true
+    },
+    {
+      "id": "school-cost-estimator",
+      "name": "School Program Cost Estimator",
+      "label": "Schools",
+      "category": "schools",
+      "description": "Interactive On-Campus Workshops & Cost Generator — model program hours and cost for a school or partner site.",
+      "icon": "🏫",
+      "url": "/school-cost-estimator.html"
     }
   ]
 }
