@@ -64,7 +64,8 @@
       "category": "schools",
       "description": "Interactive On-Campus Workshops & Cost Generator — model program hours and cost for a school or partner site.",
       "icon": "🏫",
-      "url": "/school-cost-estimator.html"
+      "url": "/apps/school-cost-estimate",
+      "internal": true
     }
   ]
 }

@@ -20,6 +20,7 @@ import { AppsPage } from "./pages/AppsPage";
 import { PrintEstimatePage } from "./pages/apps/PrintEstimatePage";
 import { ModelingEstimatePage } from "./pages/apps/ModelingEstimatePage";
 import { PrintCardsPage } from "./pages/apps/PrintCardsPage";
+import { SchoolCostEstimatePage } from "./pages/apps/SchoolCostEstimatePage";
 
 import "./styles/globals.css";
 
@@ -70,6 +71,10 @@ function AppLayout() {
             element={<ModelingEstimatePage />}
           />
           <Route path="/apps/print-cards" element={<PrintCardsPage />} />
+          <Route
+            path="/apps/school-cost-estimate"
+            element={<SchoolCostEstimatePage />}
+          />
           <Route path="/legal" element={<LegalIndexPage />} />
           <Route path="/legal/waiver" element={<WaiverPage />} />
         </Routes>
