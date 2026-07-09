@@ -907,7 +907,47 @@ export function SchedulePage() {
                         >
                           {date.getDate()}
                         </div>
-                        <div className="space-y-1">
+                        {/* Mobile: dot-only indicators — tapping still opens
+                            that event's detail modal, same as the full chip. */}
+                        <div className="flex flex-wrap items-center gap-1 sm:hidden">
+                          {dayEvents.slice(0, 3).map((event) => {
+                            const s = getStyle(event);
+                            const displayName = stripCodePrefix(
+                              event.name,
+                              event.eventCode,
+                            );
+                            return (
+                              <button
+                                key={event.id}
+                                type="button"
+                                onClick={() => setSelectedEvent(event)}
+                                aria-label={`${displayName}, ${formatTimeRange(
+                                  event.startTime,
+                                  event.endTime,
+                                )}`}
+                                title={`${formatTimeRange(
+                                  event.startTime,
+                                  event.endTime,
+                                )}${
+                                  event.eventCode ? ` ${event.eventCode}` : ""
+                                } ${displayName}`}
+                                className="flex size-4 items-center justify-center rounded-full"
+                              >
+                                <span
+                                  className={`size-2 shrink-0 rounded-full ${s.dot}`}
+                                />
+                              </button>
+                            );
+                          })}
+                          {dayEvents.length > 3 && (
+                            <span className="text-[9px] font-medium text-gray-400">
+                              +{dayEvents.length - 3}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Tablet/desktop: full two-line chip */}
+                        <div className="hidden space-y-1 sm:block">
                           {dayEvents.slice(0, 3).map((event) => {
                             const s = getStyle(event);
                             const displayName = stripCodePrefix(
