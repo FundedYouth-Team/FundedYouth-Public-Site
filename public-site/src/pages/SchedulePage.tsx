@@ -130,7 +130,9 @@ function formatChipTime(iso: string): string {
   const m = d.getMinutes();
   const ampm = h >= 12 ? "PM" : "AM";
   h = h % 12 || 12;
-  return m === 0 ? `${h}${ampm}` : `${h}:${String(m).padStart(2, "0")}${ampm}`;
+  return m === 0
+    ? `${h} ${ampm}`
+    : `${h}:${String(m).padStart(2, "0")} ${ampm}`;
 }
 
 function formatLongDate(iso: string): string {
@@ -905,22 +907,40 @@ export function SchedulePage() {
                         >
                           {date.getDate()}
                         </div>
-                        <div className="space-y-0.5">
+                        <div className="space-y-1">
                           {dayEvents.slice(0, 3).map((event) => {
                             const s = getStyle(event);
+                            const displayName = stripCodePrefix(
+                              event.name,
+                              event.eventCode,
+                            );
                             return (
                               <button
                                 key={event.id}
                                 type="button"
                                 onClick={() => setSelectedEvent(event)}
-                                title={`${formatChipTime(event.startTime)} ${event.name}`}
-                                className={`flex w-full items-center gap-1 truncate rounded px-1 py-0.5 text-left text-[10px] font-medium leading-tight ${s.chipBg} ${s.chipText} ${s.chipHover}`}
+                                title={`${formatTimeRange(
+                                  event.startTime,
+                                  event.endTime,
+                                )}${
+                                  event.eventCode ? ` ${event.eventCode}` : ""
+                                } ${event.name}`}
+                                className={`flex w-full flex-col rounded px-1 py-0.5 text-left text-[10px] font-medium leading-tight ${s.chipBg} ${s.chipText} ${s.chipHover}`}
                               >
-                                <span
-                                  className={`inline-block h-1.5 w-1.5 shrink-0 rounded-full ${s.dot}`}
-                                />
-                                <span className="truncate">
-                                  {formatChipTime(event.startTime)} {event.name}
+                                <span className="flex items-center gap-1 truncate">
+                                  <span
+                                    className={`inline-block h-1.5 w-1.5 shrink-0 rounded-full ${s.dot}`}
+                                  />
+                                  <span className="truncate">
+                                    {formatTimeRange(
+                                      event.startTime,
+                                      event.endTime,
+                                    )}
+                                    {event.eventCode && ` ${event.eventCode}`}
+                                  </span>
+                                </span>
+                                <span className="truncate pl-2.5">
+                                  {displayName}
                                 </span>
                               </button>
                             );
