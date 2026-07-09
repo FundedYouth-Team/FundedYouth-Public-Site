@@ -10,6 +10,7 @@ const menuItems = [
 ];
 
 const mobileOnlyMenuItems = [
+  { label: "Apps & Tools", href: "/apps", page: "apps" },
   { label: "Volunteer", href: "/volunteer", page: "volunteer" },
   { label: "Donate", href: "/donate", page: "donate" },
   { label: "Contact", href: "/contact", page: "contact" },
