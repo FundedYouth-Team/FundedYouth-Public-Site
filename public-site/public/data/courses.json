@@ -1,0 +1,66 @@
+{
+    "3dp1": {
+        "id": "3dp1",
+        "course": "Cura Slicer Basics",
+        "description": "Learn the fundamentals of 3D Printing using Cura Slicing Software. Take an existing 3D model and prepare it for printing on FDM-style printers like the Sovol SV06 Plus.",
+        "classes": {
+            "1": {
+                "title": "Lesson",
+                "length": "1"
+            },
+            "2": {
+                "title": "Challenge",
+                "length": "1"
+            }
+        }
+    },
+    "3dp2": {
+        "id": "3dp2",
+        "course": "Bambu Studio Basics",
+        "description": "Learn how to print on Bambu Printer. Find files on MakerWorld, set up Bambu Lab printers, slice single or multiple plates, and learn supports, adhesion, and exporting to G-Code.",
+        "classes": {
+            "1": {
+                "title": "Lesson",
+                "length": "1"
+            },
+            "2": {
+                "title": "Challenge",
+                "length": "1"
+            }
+        }
+    },
+    "3dm1": {
+        "id": "3dm1",
+        "course": "TinkerAAD 3D Modeling",
+        "description": "Learn the basics of 3D modeling with TinkerCAD. Focus on design thinking for 3D printing. Final projects: build a funnel, a die, a castle, and a chess pawn. Produce estimates for customers.",
+        "classes": {
+            "1": {
+                "title": "Workspace and Tooling",
+                "length": "1"
+            },
+            "2": {
+                "title": "Castle and Chess Pawn",
+                "length": "1"
+            }
+        }
+    },
+    "cde1": {
+        "id": "cde1",
+        "course": "Sprite Lab Coding",
+        "description": "Build a strong foundation in programming logic using the intuitive block-coding tools in Sprite Lab. Three classes that establish the essential terminology and concepts behind every modern programming language.",
+        "classes": {
+            "1": {
+                "title": "User Input and Variables",
+                "length": "1"
+            },
+            "2": {
+                "title": "Functions, Events, and IF Blocks",
+                "length": "1"
+            },
+            "3": {
+                "title": "Behaviors and Interactive Maze Game",
+                "length": "1"
+            }
+        }
+    }
+}
