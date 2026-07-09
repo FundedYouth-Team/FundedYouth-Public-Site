@@ -177,6 +177,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  to="/apps"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Apps &amp; Tools
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/faq"
                   className="hover:text-blue-400 transition-colors"
                 >
