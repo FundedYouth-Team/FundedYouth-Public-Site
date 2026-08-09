@@ -24,6 +24,11 @@
       "id": "schools",
       "label": "Schools",
       "icon": "bolt"
+    },
+    {
+      "id": "finance",
+      "label": "Money & Pricing",
+      "icon": "dollar"
     }
   ],
   "apps": [
@@ -65,6 +70,16 @@
       "description": "Interactive On-Campus Workshops & Cost Generator — model program hours and cost for a school or partner site.",
       "icon": "🏫",
       "url": "/apps/school-cost-estimate",
+      "internal": true
+    },
+    {
+      "id": "reverse-tax-calculator",
+      "name": "Reverse Tax Calculator",
+      "label": "Internal",
+      "category": "finance",
+      "description": "Set a tax rate and the total you want the customer to pay — get the exact pre-tax amount to charge.",
+      "icon": "🧾",
+      "url": "/apps/reverse-tax-calculator",
       "internal": true
     }
   ]

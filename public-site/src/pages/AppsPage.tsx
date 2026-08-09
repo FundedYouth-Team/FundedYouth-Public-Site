@@ -83,6 +83,12 @@ function CategoryIcon({
           <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
         </svg>
       );
+    case "dollar":
+      return (
+        <svg {...common}>
+          <path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+        </svg>
+      );
     case "sparkles":
     default:
       return (

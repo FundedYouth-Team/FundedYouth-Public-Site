@@ -21,6 +21,7 @@ import { PrintEstimatePage } from "./pages/apps/PrintEstimatePage";
 import { ModelingEstimatePage } from "./pages/apps/ModelingEstimatePage";
 import { PrintCardsPage } from "./pages/apps/PrintCardsPage";
 import { SchoolCostEstimatePage } from "./pages/apps/SchoolCostEstimatePage";
+import { ReverseTaxCalculatorPage } from "./pages/apps/ReverseTaxCalculatorPage";
 
 import "./styles/globals.css";
 
@@ -74,6 +75,10 @@ function AppLayout() {
           <Route
             path="/apps/school-cost-estimate"
             element={<SchoolCostEstimatePage />}
+          />
+          <Route
+            path="/apps/reverse-tax-calculator"
+            element={<ReverseTaxCalculatorPage />}
           />
           <Route path="/legal" element={<LegalIndexPage />} />
           <Route path="/legal/waiver" element={<WaiverPage />} />
