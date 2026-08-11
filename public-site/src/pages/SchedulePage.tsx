@@ -171,6 +171,256 @@ function getCalendarGrid(monthDate: Date): Date[][] {
 
 const WEEKDAY_LABELS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
+const PORTAL_URL = "https://portal.fundedyouth.org/";
+
+// The five questions the portal booking flow walks through, one at a time.
+const BOOKING_STEPS = [
+  "What you want to work on",
+  "Which day",
+  "What time",
+  "Which instructor",
+  "How you want to take it",
+];
+
+const BOOKING_FORMATS: Array<{
+  name: string;
+  summary: string;
+  detail: string;
+  icon: JSX.Element;
+}> = [
+  {
+    name: "1-on-1",
+    summary: "Just you and the instructor.",
+    detail: "Private.",
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+      />
+    ),
+  },
+  {
+    name: "Private group",
+    summary: "You and the people you bring.",
+    detail: "Doesn't show on anyone else's schedule.",
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-5.13a4 4 0 11-8 0 4 4 0 018 0zm6 3a3 3 0 11-6 0 3 3 0 016 0z"
+      />
+    ),
+  },
+  {
+    name: "Open group",
+    summary: "Other members can see it.",
+    detail: "They can take the empty seats.",
+    icon: (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+      />
+    ),
+  },
+];
+
+const BOOKING_NOTES = [
+  {
+    title: "Membership required",
+    body: "Booking your own session requires an active membership.",
+  },
+  {
+    title: "Paid with FYBITS",
+    body: "The exact cost is shown before you confirm, along with your balance after.",
+  },
+  {
+    title: "Book up to a month ahead",
+    body: "Each instructor sets their own minimum notice.",
+  },
+  {
+    title: "Cancel from your portal",
+    body: "Your credits come back. Cancelling last-minute may keep a small portion.",
+  },
+];
+
+function BookYourOwnSession() {
+  return (
+    <section
+      id="book-your-own-session"
+      className="scroll-mt-20 border-t border-gray-200 bg-white py-12 md:py-16"
+    >
+      <div className="container mx-auto max-w-6xl px-4">
+        <div className="max-w-3xl">
+          <span className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-orange-700">
+            New for members
+          </span>
+          <h2 className="mt-4 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+            Book Your Own Session
+          </h2>
+          <p className="mt-3 text-base leading-relaxed text-gray-600">
+            The calendar above is our public schedule. Active members can also
+            book instructional time directly from the portal — no email
+            back-and-forth, no waiting on a reply.
+          </p>
+          <p className="mt-3 text-base leading-relaxed text-gray-600">
+            Sign in, open{" "}
+            <strong className="font-semibold text-gray-900">
+              Book a Session
+            </strong>
+            , and you&apos;ll walk through one question at a time. The times you
+            see are real openings — instructor availability minus everything
+            already on the academy&apos;s calendar — so whatever you pick is
+            yours the moment you confirm. Your instructor is notified straight
+            away.
+          </p>
+        </div>
+
+        {/* The five-question flow */}
+        <ol className="mt-6 flex flex-wrap items-center gap-2">
+          {BOOKING_STEPS.map((step, i) => (
+            <li key={step} className="flex items-center gap-2">
+              <span className="inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-sm font-medium text-gray-800">
+                <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">
+                  {i + 1}
+                </span>
+                {step}
+              </span>
+              {i < BOOKING_STEPS.length - 1 && (
+                <svg
+                  aria-hidden="true"
+                  className="hidden h-4 w-4 shrink-0 text-gray-300 sm:block"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              )}
+            </li>
+          ))}
+        </ol>
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {/* What you can book */}
+          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <h3 className="text-lg font-bold text-gray-900">
+              What you can book
+            </h3>
+            <ul className="mt-4 space-y-3 text-sm leading-relaxed text-gray-600">
+              <li className="flex gap-2.5">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" />
+                <span>
+                  A full course, a workshop, or a single class from the catalog.
+                </span>
+              </li>
+              <li className="flex gap-2.5">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" />
+                <span>
+                  Or pick{" "}
+                  <strong className="font-semibold text-gray-900">Other</strong>{" "}
+                  and tell us what you want to work on in your own words —
+                  finish a 3D print, debug a project, learn a tool.
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Three ways to take it */}
+          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm lg:col-span-2">
+            <h3 className="text-lg font-bold text-gray-900">
+              Three ways to take it
+            </h3>
+            <div className="mt-4 grid gap-4 sm:grid-cols-3">
+              {BOOKING_FORMATS.map((format) => (
+                <div
+                  key={format.name}
+                  className="rounded-xl border border-gray-100 bg-gray-50 p-4"
+                >
+                  <svg
+                    aria-hidden="true"
+                    className="h-5 w-5 text-blue-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    {format.icon}
+                  </svg>
+                  <p className="mt-2 text-sm font-bold text-gray-900">
+                    {format.name}
+                  </p>
+                  <p className="mt-1 text-sm leading-relaxed text-gray-600">
+                    {format.summary}
+                  </p>
+                  <p className="mt-1 text-xs leading-relaxed text-gray-500">
+                    {format.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Good to know */}
+        <div className="mt-6 rounded-2xl border border-blue-100 bg-blue-50/60 p-6">
+          <h3 className="text-lg font-bold text-gray-900">Good to know</h3>
+          <dl className="mt-4 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+            {BOOKING_NOTES.map((note) => (
+              <div key={note.title}>
+                <dt className="text-sm font-semibold text-gray-900">
+                  {note.title}
+                </dt>
+                <dd className="mt-0.5 text-sm leading-relaxed text-gray-600">
+                  {note.body}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <a
+            href={PORTAL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-orange-500 px-5 py-3 text-sm font-semibold text-white shadow-md transition-colors hover:bg-orange-600"
+          >
+            Book a Session
+            <svg
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </a>
+          <a
+            href="/faq"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition-colors hover:border-blue-600 hover:text-blue-600"
+          >
+            How FYBITS &amp; membership work
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function EventDetailModal({
   event,
   onClose,
@@ -461,7 +711,7 @@ export function SchedulePage() {
     const PAGE_TITLE =
       "Schedule — FundedYouth | Upcoming STEAM Classes & Workshops in San Diego";
     const PAGE_DESC =
-      "Browse upcoming STEAM classes, workshops, and bootcamps at FundedYouth. 3D printing, CAD design, coding, and more for students in San Diego County.";
+      "Browse upcoming STEAM classes, workshops, and bootcamps at FundedYouth — 3D printing, CAD design, coding, and more in San Diego County. Members can book their own 1-on-1 or group sessions from the portal.";
     const now = Date.now();
     const upcoming = feed.events.filter(
       (e) =>
@@ -527,7 +777,7 @@ export function SchedulePage() {
     title:
       "Schedule — FundedYouth | Upcoming STEAM Classes & Workshops in San Diego",
     description:
-      "Browse upcoming STEAM classes, workshops, and bootcamps at FundedYouth. 3D printing, CAD design, coding, and more for students in San Diego County.",
+      "Browse upcoming STEAM classes, workshops, and bootcamps at FundedYouth — 3D printing, CAD design, coding, and more in San Diego County. Members can book their own 1-on-1 or group sessions from the portal.",
     url: "https://fundedyouth.org/schedule",
     schema: scheduleSchema ?? undefined,
   });
@@ -630,7 +880,14 @@ export function SchedulePage() {
               </h1>
               <p className="mt-3 max-w-2xl text-base text-gray-600 sm:text-lg">
                 Browse upcoming STEAM classes, workshops, events, and
-                bootcamps at FundedYouth.
+                bootcamps at FundedYouth. Active members can also{" "}
+                <a
+                  href="#book-your-own-session"
+                  className="font-semibold text-blue-700 underline decoration-blue-300 underline-offset-2 hover:text-blue-800"
+                >
+                  book their own session
+                </a>{" "}
+                straight from the portal.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
@@ -1245,6 +1502,8 @@ export function SchedulePage() {
           )}
         </div>
       </section>
+
+      <BookYourOwnSession />
 
       {selectedEvent && (
         <EventDetailModal
