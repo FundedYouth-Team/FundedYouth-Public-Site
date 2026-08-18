@@ -7,6 +7,11 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 export default defineConfig(() => {
   return {
     plugins: [react(), tsconfigPaths()],
+    build: {
+      // Explicit: never ship source maps to production (Vite's default, pinned so
+      // it can't be flipped on accidentally).
+      sourcemap: false,
+    },
     server: {
       proxy: {
         "/api/blog": {
