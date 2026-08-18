@@ -266,7 +266,7 @@ export function SponsorPage() {
       const response = await fetch("/api/sponsor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, captchaToken }),
+        body: JSON.stringify({ ...formData, captchaToken, honeypot }),
       });
 
       const result = await response.json();

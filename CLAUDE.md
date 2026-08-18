@@ -45,13 +45,20 @@ Package manager: pnpm 10.11 (enforced via `packageManager` field). Node >=18.
 The client calls `/api/calendar/...` and `/api/blog/...`. Two different mechanisms serve these paths depending on environment:
 
 1. **Dev** — [public-site/vite.config.ts](public-site/vite.config.ts) defines Vite `server.proxy` entries that rewrite + forward to the upstream origin (e.g. `cdn.fundedyouth.org/feeds/calendar`).
-2. **Production (Cloudflare Pages)** — files under [public-site/functions/api/](public-site/functions/api/) are Pages Functions that forward the same paths and add CORS headers (e.g. [functions/api/calendar/[[path]].ts](public-site/functions/api/calendar/[[path]].ts)).
+2. **Production (Cloudflare Pages)** — files under [public-site/functions/api/](public-site/functions/api/) are Pages Functions. Two exist: [functions/api/calendar/[[path]].ts](public-site/functions/api/calendar/[[path]].ts) proxies the calendar feed and adds CORS headers; [functions/api/sponsor.ts](public-site/functions/api/sponsor.ts) accepts the sponsor form POST and emails it via Resend.
+
+Note: the `/api/blog` Vite dev proxy has **no** production Function behind it and nothing in `src/` calls it. Pages Functions do not run under `pnpm dev` — use `wrangler pages dev` to exercise `/api/sponsor` locally.
 
 If you add a new upstream API, mirror this pattern: Vite proxy for dev + a matching Pages Function under `functions/api/` for prod. Use proxies when the upstream lacks CORS, or when secrets need to stay server-side.
 
 ### Environment variables
 
-Currently no env vars are required. If you add one, prefix browser-exposed vars with `VITE_` and document the server-only counterparts in a new `.env.example`.
+No browser-exposed (`VITE_`) vars are required. Server-only vars for Pages Functions are documented in [public-site/.env.example](public-site/.env.example) and set in the Cloudflare Pages dashboard:
+
+- `RESEND_API_KEY` (required) — used by `functions/api/sponsor.ts` to email sponsor applications. Submissions return 500 until it is set.
+- `SPONSOR_TO` / `SPONSOR_FROM` (optional) — override the recipient/sender.
+
+If you add a browser-exposed var, prefix it with `VITE_`; keep server-only counterparts out of the client bundle.
 
 ### Static assets
 
